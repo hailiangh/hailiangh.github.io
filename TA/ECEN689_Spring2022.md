@@ -5,7 +5,7 @@
 ## Lab 5
 
 ## Lab 6: Viterbi Decoder Design on the FPGA
-
+[Lab6 Manual](ECEN689_Spring2022/lab6_manual.md)
 
 hello world
 
