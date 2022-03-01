@@ -12,7 +12,7 @@ In the Huffman tree below, the upper bound in each level are `0, 10, 101, 1101`.
 
 ![pic1](pics/huffman_0.PNG)
 
-**How to calculate the UB in each level?**
+## How to calculate the UB in each level?
 
 Initially, `UB = 0`.
 
