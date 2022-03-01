@@ -2,7 +2,10 @@
 
 # H1 too
 
-## H2
+## Lab 5
+
+## Lab 6: Viterbi Decoder Design on the FPGA
+
 
 hello world
 
