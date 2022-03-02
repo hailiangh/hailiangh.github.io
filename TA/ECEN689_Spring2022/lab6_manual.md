@@ -15,6 +15,12 @@ Suppose a bitstream is 101110, where the leftmost bit is the earliest bit (x[0])
 ### Viterbi decoder
 Given an encoded bitstream, Viterbi decoder is employed to decode it. First, we need to find a reliable way to represent our encoding system. For the encoding example detailed above, we can represent it by the circuit shown in Figure 1.
 
+There are two registers x[n-1] and x[n-2]. Besides, we can also represent this using a finite state machine as shown in Figure 2. In Figure 2, the number in each state represents the value stored in the registers (x[n-1] and x[n-2]), with the leftmost bit representing the most recent bit (\mathbit{x}[\mathbit{n}-\mathbf{1}]). 
+
+The length of the bits in each state is K-1. Each x/yy on edge represents that if the next bit is x, the parity bits output is yy. The length of the bits of yy is r.
+
+
+
 ## Implementation
 
 ## Submission
