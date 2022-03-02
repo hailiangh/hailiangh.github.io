@@ -10,7 +10,7 @@ Example:
 
 In the Huffman tree below, the upper bound in each level are `0, 10, 101, 1101`.
 
-![pic1](pics/huffman_0.PNG)
+![pic1](./pics/huffman_0.PNG)
 
 ## How to calculate the UB in each level?
 
@@ -28,7 +28,9 @@ For example,  `SC[0] = 0, SC[1] = 2, SC[2] = 3, SC[3] = 6` for the Hufftable abo
 
 ## How to check if a code (code length = n) is a Huffman code?
 
-By comparing a n-bit code with the **UB** in the `n-1`th level, we can tell if this code is a Huffman code. For example, for a code `11`, we compare it with `UB=10`. We can know that `11` is not a Huffman code since `11 > 10`. For a code `100`, we compare it with `UB = 101`. We can know that `110` is a Huffman code since `100 < 101`.
+By comparing a n-bit code with the **UB** in the `n-1`th level, we can tell if this code is a Huffman code.  
+For example, for a code `11`, we compare it with `UB=10`. We can know that `11` is not a Huffman code since `11 > 10`.  
+For a code `100`, we compare it with `UB = 101`. We can know that `110` is a Huffman code since `100 < 101`.
 
 ## How to calculate the index of a Huffman code?
 
