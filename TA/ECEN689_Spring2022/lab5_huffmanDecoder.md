@@ -45,7 +45,7 @@ For code `100`, `Dis = 1, Idx = SC[2] - Dis = 3 - 1 = 2`. `Symbol = huffsymbols[
 For code `1011`, `Dis = 1101 - 1011 = 2, Idx = SC[3] - Dis = 6 - 2 = 4`. `Symbol = huffsymbols[4]`. (code `1011` is mapped with the `5th` symbol)
 
 ## How to decode?
-
+Here is a pseudo-code for the Huffman decoder.  
 ```C
 n = 0
 on each clock cycle:
@@ -68,6 +68,12 @@ on each clock cycle:
 		finish <= 1;
 		data <= 'hff;
 	}
-
-
 ```
+
+## How to take a part (e.g. 8 bits) from a long register in Verilog?
+In the pseudo-code above, we need to take top n bits of `code`, where `n` is a register.  
+We also need to take some specific bits of the `Hufftable`.
+
+If we directly use `count = hufftable[8*i+7: 8*i]`, Vivado would complain if `i` is not a constant.  
+
+A workaround is to use the right shifting operator, to shift the bits we want to the lowest position, then 'and' it with `'hff`. `count = (hufftable >> (8*i)) & 'hff`.
