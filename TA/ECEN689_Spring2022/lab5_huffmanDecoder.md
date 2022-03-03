@@ -46,7 +46,7 @@ For code `1011`, `Dis = 1101 - 1011 = 2, Idx = SC[3] - Dis = 6 - 2 = 4`. `Symbol
 
 ## How to decode?
 
-```C++
+```C
 n = 0
 on each clock cycle:
 	if (n < 16){
