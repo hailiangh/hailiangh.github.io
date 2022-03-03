@@ -46,14 +46,28 @@ For code `1011`, `Dis = 1101 - 1011 = 2, Idx = SC[3] - Dis = 6 - 2 = 4`. `Symbol
 
 ## How to decode?
 
-```python
-for n = 0:length(code)-1
-	level = n;
-	code_to_compare = top n bits of code;
-	update UB(n);
-	update SC(n);
-	if code_to_compare < UB:
-		calculate Idx;
-		symbol = huffsymbols[Idx];
-		break;
+```C++
+n = 0
+on each clock cycle:
+	if (n < 16){
+		// Check if the top n bits of code is a Huffman code.
+		level = n;
+		code_to_compare = top n bits of code;
+		update UB(n);
+		update SC(n);
+		if (code_to_compare < UB) {
+			calculate Idx;
+			symbol = huffsymbols[Idx];
+		}
+		n = n + 1
+	}
+	else {
+		// If we checked all 16 bits of code and still didn't find a Huffman code
+		// We discard this code and move on.
+		length <= 0;
+		finish <= 1;
+		data <= 'hff;
+	}
+
+
 ```
