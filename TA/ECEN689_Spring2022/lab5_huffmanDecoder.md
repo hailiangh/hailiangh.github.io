@@ -76,4 +76,6 @@ We also need to take some specific bits of the `Hufftable`.
 
 If we directly use `count = hufftable[8*i+7: 8*i]`, Vivado would complain if `i` is not a constant.  
 
-A workaround is to use the right shifting operator, to shift the bits we want to the lowest position, then 'and' it with `'hff`. `count = (hufftable >> (8*i)) & 'hff`.
+A workaround is to use the right shifting operator, to shift the bits we want to the lowest position, then 'and' it with `'hff`.  
+
+`count = (hufftable >> (8*i)) & 'hff`.
