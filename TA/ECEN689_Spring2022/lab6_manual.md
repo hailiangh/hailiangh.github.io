@@ -19,6 +19,12 @@ There are two registers x[n-1] and x[n-2]. Besides, we can also represent this u
 
 The length of the bits in each state is K-1. Each x/yy on edge represents that if the next bit is x, the parity bits output is yy. The length of the bits of yy is r.
 
+There is a structure called Trellis. This structure describes the state change each time a bit is given as input. An example is shown in Figure 3. The output bitstream (yy) here is `111101000110`.  
+
+To decode, given an encoded bitstream, we need to find out the path in Trellis which has the highest probability (lowest error) to generate the encoded bitstream.
+
+
+
 
 
 ## Implementation
