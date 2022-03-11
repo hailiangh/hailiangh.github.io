@@ -62,7 +62,35 @@ When the `codeout` is ready, `finish` is set to `1`, and both `codeout` and `fin
 
 After you designed the decoder, run simulation based on “viterbi_tb.v”. You should see the decoded bitstream.
 
+## 3. Implementation on the FPGA
+In this section, we will implement the design on the FPGA.  
+- Right click “top_viterbi.v” in the “source” panel and click “set as top” (If this file is already in bold font, it is already the top module).   
+- Now, “top_viterbi.v” needs a dual port RAM. We add the RAM for “top_viterbi.v”. On the left panel, click IP catalog, on the top right corner, search “ram”. Double click “block memory generator”.
+- If there is a window popped up, asking if you want to add IP to block design or customize IP, choose "customize IP".
+- For memory type, select “True Dual Port Ram”.
+- In both port A and port B options, change write width to 8, and write depth to 65536.
+- Operation mode “Read First”, enable port type “Always Enabled”. Click “ok”.
+- In the pop-up window, select “Global” in the synthesis option, and click “generate”.
+- Now, click generate bitstream. After the bitstream is generated, click file->export->export hardware. Check include bitstream, click “ok”.
+- Please launch SDK and generate the boot image (BOOT.bin) as in the previous lab with one exception:
+Use the bitstream file base/base.sdk/top_viterbi_hw_platform_0/top_viterbi.bit.
+- Copy the updated BOOT.bin and lab6_viterbi_test into your SD card, boot the FPGA and run the test with command:
+`./lab6_viterbi_test`
+- Take a screen shot of the terminal when the result shows.  
+- Unmount the SD card, exit the serial communication and turn off your FPGA.
 
+Some commonly used commands:  
+```
+mount /dev/mmcblk0p1 /mnt/
+cd /mnt/
+insmod transfpga.ko
+mknod /dev/transfpga c 245 0
+./lab6_viterbi_test
+cd /
+umount /mnt/
+```
 
+## 4. Question
+- Is Viterbi Decoder guaranteed to decode the original data correctly? Why?
 
-## Submission
+## Pre-lab Submission
