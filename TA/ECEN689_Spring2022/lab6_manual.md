@@ -1,5 +1,5 @@
 # Viterbi Decoder on FPGA
-## Introduction
+## 1. Introduction
 For this lab, we need to design Viterbi decoder. Viterbi decoder can be used to decode the code encoded by convolutional coding.
 
 ### Convolutional coding
@@ -43,7 +43,24 @@ The second step is to calculate the least error on each node in Trellis. Since w
 The third step is, starting from the last column, always find the node with least error, and backtrack all the way to the first column. When backtracking one edge, the input of the edge is saved (for instance, if an edge is `1/10`, the input is `1`), and the decoded bitstream is in the reversed order of the saved edge inputs.
 
 In this lab, we will implement the Viterbi decoder with `r = 2` and `K = 3`.
-## Implementation
+## 2. Lab Design on Viterbi Decoder
+In this section, we need to implement the Viterbi module in Vivado. Before you proceed, please download “Lab6_student_code.zip” from Piazza and extract it. After extraction, you will get a folder named as “Lab6_student_code/”.
+
+Copy the folder “base_vivado” and rename it as “lab6_vivado”. From the source panel, remove unnecessary source files from lab5. Open the project by double-click on “lab6_vivado/base/base.xpr”.
+
+Add all the source files to the project from “Lab6_student_code/” and implement your design in "viterbi.v" according to Section 1.
+
+You are required to design Viterbi decoder with `r=2` and `K=3`. The length of the input code length `10`, thus, the length of the output code length is `5`.
+
+In “viterbi.v”, `codein` is the input code which needs to be decoded. The highest `r` bits (bit 9 to bit 8) are the earliest bits (p0[0],p1[0]). The `state_out` input contains information about the state output given the input. The structure of it is: `[the output when inputting 1 at state 11][the output when inputting 0 at state 11] [the output when inputting 1 at state 10][the output when inputting 0 at state 10] [the output when inputting 1 at state 01][the output when inputting 0 at state 01][the output when inputting 1 at state 00][the output when inputting 0 at state 00]`, with each “[]” denoting `r` bits. The highest bit in the state representation here is the latest bit (`x[n-1]`). For example, if current state is `10`, the input is `1`, then, the next state is `11` but not `01`.
+
+You are required to write Verilog code such that:  
+When `rst` is `0`, `finish` is set to `0`.  
+When `rst` is `1`, the module starts calculating.  
+The decoded bitstream is finally put at the output port `codeout`. The first data is the earliest bit (`x[0]`).  
+When the `codeout` is ready, `finish` is set to `1`, and both `codeout` and `finish` are required to  hold their values.
+
+After you designed the decoder, run simulation based on “viterbi_tb.v”. You should see the decoded bitstream.
 
 
 
