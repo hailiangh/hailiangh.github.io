@@ -93,4 +93,16 @@ umount /mnt/
 ## 4. Question
 - Is Viterbi Decoder guaranteed to decode the original data correctly? Why?
 
-## Pre-lab Submission
+## 5. Pre-lab Submission
+- Please only submit one PDF file, containing your answers to the question in the previous section.  
+- Please name the PDF file as "Lab#_Prelab_Section#_LastName_FirstName.pdf".  
+- Please submit the PDF file on Canvas before March 21 (Monday) 11:59 pm.  
+
+
+## 6. Post-lab Submission
+- Please only submit one PDF file, containing the following items:  
+    - Screenshots of the terminal after running the command `./lab6_viterbi_test`  
+    - A few words explaining the results
+    - Screenshots of your code in this design
+- Please name the PDF file as "Lab#_Postlab_Section#_LastName_FirstName.pdf".  
+- Please submit the PDF file on Canvas before March 25 (Friday) 11:59 pm.  
