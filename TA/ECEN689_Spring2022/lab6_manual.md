@@ -3,15 +3,15 @@
 For this lab, we need to design Viterbi decoder. Viterbi decoder can be used to decode the code encoded by convolutional coding.
 
 ### Convolutional Coding
-Given a bitstream, we can encode it by performing convolution in a window of length K. The output from each time convolution is carried out is the parity bit. In each clock cycle, we can do r convolutions and get r parity bits.
+Given a bitstream, we can encode it by performing convolution in a window of length `K`. The output from each time convolution is carried out is the parity bit. In each clock cycle, we can do `r` convolutions and get `r` parity bits.
 For example, assume the parity bits are calculated by:
 ```
 p0[n]=x[n]⊕x[n-1]⊕x[n-2]
 p1[n]=x[n]⊕x[n-1]
 ```
-In the above case, r=2 since there are two parity bits in each cycle, and `K=3` since the largest length of the convolution window is 3 (from x[n]  to x[n-2]). Note that the “XOR” here is the mod 2 addition.
+In the above case, `r=2` since there are two parity bits in each cycle, and `K=3` since the largest length of the convolution window is 3 (from x[n]  to x[n-2]). Note that the `XOR` here is the mod 2 addition.
 
-Suppose a bitstream is 101110, where the leftmost bit is the earliest bit (x[0]). We assume x[-1] and x[-2] are 0, then the first two parity bits (p0[0] and p1[0]) are 1 each, which gives 11. The second is 11, the third is 01, all the way to the sixth, which is 01. Therefore, the length of the output encoding code is r ×length(input bitstream).
+Suppose a bitstream is `101110`, where the leftmost bit is the earliest bit (x[0]). We assume `x[-1]` and `x[-2]` are 0, then the first two parity bits (`p0[0]` and `p1[0]`) are 1 each, which gives `11`. The second is `11`, the third is `01`, all the way to the sixth, which is `01`. Therefore, the length of the output encoding code is `r x length(input bitstream)`.
 
 ### Viterbi encoder
 Given an encoded bitstream, Viterbi decoder is employed to decode it. First, we need to find a reliable way to represent our encoding system. For the encoding example detailed above, we can represent it by the circuit shown in the figure below. In this design, there are two registers saving `x[n-1]` and `x[n-2]`.
@@ -24,7 +24,7 @@ The length of the bits in each state is `K-1`. Each `x/yy` on edge represents th
 ![pic2](./pics/lab6_manual_FiniteStateMachine.png)
 
 ### Viterbi decoder
-There is a structure called Trellis as shown in the figure below. In a column, the four nodes (squared boxes) represent all four states (`00`, `01`, `10`, `11`) in a cycle. Each column represents a cycle. And the arrows between columns represents the transition between the states. This structure describes the change of states each time a bit (`x[n]`) is given as input. In the example, the output bitstream (`yy`) here is `111101000110`.  
+There is a structure called Trellis as shown in the figure below. In a column, the four nodes (squared boxes) represent all four states (`00`, `01`, `10`, `11`) in a cycle. Each column represents a cycle. And the arrows between columns represents the transition between the states. This structure describes the change of states each time a bit (`x[n]`) is given as input. In the example, the output bitstream (`yy`) here is `11 11 01 00 01 10`.  
 
 ![pic3](./pics/lab6_manual_TrellisStructure.png)
 
@@ -51,7 +51,10 @@ Add all the source files to the project from “Lab6_student_code/” and implem
 You are required to design Viterbi decoder with `r=2` and `K=3`. The length of the input code length `10`, thus, the length of the output code length is `5`.
 
 In `viterbi.v`, `codein` is the encoded bitstream which needs to be decoded. The highest `r` bits (bit `9` to bit `8`) are the earliest two parity bits (`p0[0]`,`p1[0]`).  
-The `states` input contains information about the state output (`yy`) given the input (`x`). The structure of it is: `[yy | x = 1, state = 11][yy | x = 0, state = 11] [yy |  x = 1, state = 10][yy | x = 0, state = 10] [yy | x = 1, state = 01][yy | x = 0, state = 01][yy | x = 1, state = 00][yy | x = 0, state = 00]`, with each `[]` denoting `r` bits.  
+The `states` input contains information about the state output (`yy`) given the input (`x`).  
+The structure of it is:  
+`[yy | x = 1, state = 11][yy | x = 0, state = 11] [yy |  x = 1, state = 10][yy | x = 0, state = 10] [yy | x = 1, state = 01][yy | x = 0, state = 01][yy | x = 1, state = 00][yy | x = 0, state = 00]`    
+, with each `[]` denoting `r` bits.  
 For the two-bit value denoting the states, the highest bit here denotes the latest bit (`state = x[n-1]x[n-2`). For example, if the current state is `10`, and the input is `1`, then, the next state is `11`.
 
 You are required to write Verilog code such that:  
