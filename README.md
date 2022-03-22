@@ -1,6 +1,3 @@
----
-usemathjax: true
----
 # H1
 
 ## H2
