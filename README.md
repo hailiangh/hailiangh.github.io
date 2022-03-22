@@ -1,5 +1,4 @@
 ---
-<!-- <h1>{{ "Hello World! | downcase }}</h1> -->
 usemathjax: true
 ---
 # H1
