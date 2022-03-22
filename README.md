@@ -13,3 +13,6 @@ usemathjax: true
 
 [test post](_posts/2022-03-12-test-blog.md)
 
+$$
+x = x + 1
+$$
