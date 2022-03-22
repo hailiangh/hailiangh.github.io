@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: withMath
 title: About
 usemathjax: true
 ---
