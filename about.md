@@ -1,7 +1,7 @@
 ---
 layout: default
 title: About
-usematjax: true
+usemathjax: true
 ---
 # About page
 
