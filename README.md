@@ -1,7 +1,3 @@
----
-layout: default
-title: Home
----
 # H1
 
 ## H2
