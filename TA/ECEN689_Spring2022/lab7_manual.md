@@ -10,7 +10,7 @@ usemathjax: true
 $$E=mc^2$$
 
 For this lab, we need to design the Kalman filter.  
-$$x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}$$
+<!-- $$x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}$$ -->
 
 <!-- Kalman filter estimates the state of a system. Assume $x$ is the state vector we want to estimate, and the system can be illustrated by:  
 $$x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}$$
