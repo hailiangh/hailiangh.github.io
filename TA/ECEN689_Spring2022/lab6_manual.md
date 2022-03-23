@@ -63,7 +63,9 @@ You are required to write Verilog code such that:
 - The decoded bitstream is finally put at the output port `codeout`. The first data is the earliest bit (`x[0]`).  
 - When the `codeout` is ready, `finish` is set to `1`, and both `codeout` and `finish` are required to  hold their values.
 
-After you designed the decoder, run simulation based on “viterbi_tb.v”. You should see the decoded bitstream.
+After you designed the decoder, run simulation based on “viterbi_tb.v”. You should see the decoded bitstream.  
+The figure below shows the outputs of PMU corresponding to the inputs in the test bench.  
+![pic4](./pics/lab6_manual_PMU.png)
 
 ## 3. Implementation on the FPGA
 In this section, we will implement the design on the FPGA.  
