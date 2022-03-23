@@ -1,3 +1,9 @@
+---
+layout: default
+title: Lab 7 - Viterbi Decoder on FPGA
+description: ECEN 489/689 - Spring 2022
+usemathjax: true
+---
 # Viterbi Decoder on FPGA
 ## 1. Introduction
 For this lab, we need to design the Kalman filter.  
