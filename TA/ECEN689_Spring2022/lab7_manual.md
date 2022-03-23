@@ -126,3 +126,5 @@ umount /mnt/
 
 $$E=mc^2$$
 
+[anotherpage](./../../another-page.md)
+
