@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: default
 title: Lab 7 - Viterbi Decoder on FPGA
 description: ECEN 489/689 - Spring 2022
@@ -125,4 +125,4 @@ umount /mnt/
 
 
 [anotherpage](./../../another-page.md)
-
+ -->
