@@ -1,4 +1,4 @@
-<!-- ---
+---
 layout: default
 title: Lab 7 - Viterbi Decoder on FPGA
 description: ECEN 489/689 - Spring 2022
@@ -7,10 +7,10 @@ usemathjax: true
 # Viterbi Decoder on FPGA
 ## 1. Introduction
 For this lab, we need to design the Kalman filter.  
-Kalman filter estimates the state of a system. Assume $x$ is the state vector we want to estimate, and the system can be illustrated by:  
+<!-- Kalman filter estimates the state of a system. Assume $x$ is the state vector we want to estimate, and the system can be illustrated by:  
 $$x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}$$
 , where $F$, $B$ are the square matrices of size `n`. $u_{k-1}$ is the input control vector of size `n` that can update the state vector from $x_{k-1}$ to $x_{k}$. $w_{k-1}$ is the noise input vector.  
-$$w_{k-1}\sim N(0,Q)$$
+$$w_{k-1}\sim N(0,Q)$$ -->
 
 
 ### Convolutional Coding
@@ -125,4 +125,4 @@ umount /mnt/
 
 
 [anotherpage](./../../another-page.md)
- -->
+
