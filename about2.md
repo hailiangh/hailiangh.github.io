@@ -1,5 +1,4 @@
 ---
-layout: withMathTwo
 title: About
 usemathjax: true
 ---
@@ -7,7 +6,7 @@ usemathjax: true
 # About page
 
 This page tells
-
+<!-- layout: withMathTwo -->
 
 $$
 x = x + 1

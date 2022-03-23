@@ -1,5 +1,4 @@
 ---
-layout: withMath
 title: About
 usemathjax: true
 ---
@@ -8,7 +7,7 @@ usemathjax: true
 
 This page tells
 
-
+<!-- layout: withMath -->
 $$
 x = x + 1
 $$
