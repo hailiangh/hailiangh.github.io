@@ -36,17 +36,27 @@ In this lab, you need to use **16-bit signed fixed-point** number for calculatio
 
 - In **"kalman.v"**, `n` is an input indicate this is the `nth` input. `u` and `z` are the acceleration and the measurement respectively. The metrics `n`, `u`, `z` will be updated on each positive edge of `clk`, i.e., for each positive edge of the clock, there is a set of new input. You are not required to use all the inputs, but the input would be continuously sent. `x0`, `P0` are the initial states. The output `n_0` indicates the output calculated from `n_0th` input. The estimated state is `x0` and `outen` indicates if there is output in this corresponding clock cycle. 
 
+- Your system may have latency and/or delay. For example. If your system has a latency of 10 clock cycles and a delay of 4 clock cycles, your system may use the input at clock cycles 0, 10, 20 …, and output the results at the respective clock cycles of  14, 24, 34… and so on. However, output n_0 needs to indicate which input is used for calculating this output. Therefore, in the above example, at the clock cycles 14, 24, 34, n_0 should be 0, 10, 20…
 
+- There will be totally 1000 input data elements, which will be input within 1000 clock cycles. You are required to have at least 5 (10 for GRADUATE students) outputs within 1000 clock cycles. Therefore, your design should not have large latency and delay. For example, if the latency of your design is 400, which means your design needs 400 clock cycles to filter one input, then you can only generate 2 filtered data output, and this is not sufficient. 
+
+- You are required to implement the design such that:
+  - When `rst` is `0`, all the data elements are reset to `0` and `outen` is set to `0`.
+  - When `rst` is `1`, the module starts sampling and calculating.
+  - Whenever there is an output on `n_0` and `x_0`, `outen` is set to `1`. Otherwise, `outen` is set to `0`. For each output, `outen` is only set to `1` for `1` clock cycle. 
 
 ## 3. Implementation on the FPGA
 In this section, we will implement the design on the FPGA.  
-- Right click “top_viterbi.v” in the “source” panel and click “set as top” (If this file is already in bold font, it is already the top module).   
-- Now, “top_viterbi.v” needs a dual port RAM. We add the RAM for “top_viterbi.v”. On the left panel, click IP catalog, on the top right corner, search “ram”. Double click “block memory generator”.
-- If there is a window popped up, asking if you want to add IP to block design or customize IP, choose "customize IP".
-- For memory type, select “True Dual Port Ram”.
-- In both port A and port B options, change write width to 8, and write depth to 65536.
-- Operation mode “Read First”, enable port type “Always Enabled”. Click “ok”.
-- In the pop-up window, select “Global” in the synthesis option, and click “generate”.
+- Right click **"top_kalman.v"** in the **"source"** panel and click **"set as top"** (If this file is shown in bold font, it is already the top module).   
+
+- The block ram settings for this lab is shown in the table below.
+  
+    | Block RAM Name | Memory Type |    Port A Settings | Port B Settings|
+    | ------------- | ------------- | ------------- | ------------- |
+    | blk_mem_gen_0  | True Dual Port  | Width: 8, Depth: 20000, Read First, Always Enabled  | Same as Port A  |
+    | blk_mem_gen_1  | Single Port RAM  | Width: 96, Depth: 1000, Read First, Always Enabled  | N/A  |
+    | blk_mem_gen_2  | Single Port RAM  | Width: 32, Depth: 1000, Read First, Always Enabled  | N/A  |
+
 - Now, click generate bitstream. After the bitstream is generated, click file->export->export hardware. Check include bitstream, click “ok”.
 - Please launch SDK and generate the boot image (BOOT.bin) as in the previous lab with one exception:
 Use the bitstream file base/base.sdk/top_viterbi_hw_platform_0/top_viterbi.bit.
