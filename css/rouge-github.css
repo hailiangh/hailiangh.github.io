@@ -1,0 +1,138 @@
+/* Adapted from
+ *   https://github.com/jwarby/jekyll-pygments-themes/blob/master/github.css
+ *
+ * For a full list of syntax-highlighting CSS files, see
+ *   https://jwarby.github.io/jekyll-pygments-themes/languages/python.html
+ */
+
+.highlight {
+  background-color: #f8f8f8;
+}
+
+.highlight .hll {
+  background-color: #ffffcc;
+}
+
+.highlight .err { /* Error */
+  color: #a61717; background-color: #e3d2d2;
+}
+
+.highlight .k,    /* Keyword */
+.highlight .kc,   /* Keyword.Constant */
+.highlight .kd,   /* Keyword.Declaration */
+.highlight .kn,   /* Keyword.Namespace */
+.highlight .kp,   /* Keyword.Pseudo */
+.highlight .kr,   /* Keyword.Reserved */
+.highlight .o,    /* Operator */
+.highlight .ow {  /* Operator.Word */
+  color: #000000; font-weight: bold;
+}
+
+.highlight .kt {  /* Keyword.Type */
+  color: #445588; font-weight: bold;
+}
+
+.highlight .c,    /* Comment */
+.highlight .c1,   /* Comment.Single */
+.highlight .cm {  /* Comment.Multiline */
+  color: #999988; font-style: italic;
+}
+.highlight .cp,   /* Comment.Preproc */
+.highlight .cs {  /* Comment.Special */
+  color: #999999; font-weight: bold; font-style: italic;
+}
+
+.highlight .gd {  /* Generic.Deleted */
+  color: #000000; background-color: #ffdddd;
+}
+.highlight .ge {  /* Generic.Emph */
+  color: #000000; font-style: italic;
+}
+.highlight .gr,   /* Generic.Error */
+.highlight .gt {  /* Generic.Traceback */
+  color: #aa0000;
+}
+.highlight .gh {  /* Generic.Heading */
+  color: #999999;
+}
+.highlight .gi {  /* Generic.Inserted */
+  color: #000000; background-color: #ddffdd;
+}
+.highlight .go {  /* Generic.Output */
+  color: #888888;
+}
+.highlight .gp {  /* Generic.Prompt */
+  color: #555555;
+}
+.highlight .gs {  /* Generic.Strong */
+  font-weight: bold;
+}
+.highlight .gu {  /* Generic.Subheading */
+  color: #aaaaaa;
+}
+
+.highlight .na,   /* Name.Attribute */
+.highlight .no,   /* Name.Constant */
+.highlight .nv,   /* Name.Variable */
+.highlight .vc,   /* Name.Variable.Class */
+.highlight .vg,   /* Name.Variable.Global */
+.highlight .vi {  /* Name.Variable.Instance */
+  color: #008080;
+}
+.highlight .nb {  /* Name.Builtin */
+  color: #0086B3;
+}
+.highlight .bp {  /* Name.Builtin.Pseudo */
+  color: #999999;
+}
+.highlight .nc {  /* Name.Class */
+  color: #445588; font-weight: bold;
+}
+.highlight .nd {  /* Name.Decorator */
+  color: #3c5d5d; font-weight: bold;
+}
+.highlight .ni {  /* Name.Entity */
+  color: #800080;
+}
+.highlight .ne,   /* Name.Exception */
+.highlight .nf,   /* Name.Function */
+.highlight .nl {  /* Name.Label */
+  color: #990000; font-weight: bold;
+}
+.highlight .nn {  /* Name.Namespace */
+  color: #555555;
+}
+.highlight .nt {  /* Name.Tag */
+  color: #000080;
+}
+
+.highlight .m,    /* Literal.Number */
+.highlight .mf,   /* Literal.Number.Float */
+.highlight .mh,   /* Literal.Number.Hex */
+.highlight .mi,   /* Literal.Number.Integer */
+.highlight .il,   /* Literal.Number.Integer.Long */
+.highlight .mo {  /* Literal.Number.Oct */
+  color: #009999;
+}
+.highlight .s,    /* Literal.String */
+.highlight .s1,   /* Literal.String.Single */
+.highlight .sb,   /* Literal.String.Backtick */
+.highlight .sc,   /* Literal.String.Char */
+.highlight .sd,   /* Literal.String.Doc */
+.highlight .s2,   /* Literal.String.Double */
+.highlight .se,   /* Literal.String.Escape */
+.highlight .sh,   /* Literal.String.Heredoc */
+.highlight .si,   /* Literal.String.Interpol */
+.highlight .sx {  /* Literal.String.Other */
+  color: #d01040;
+}
+.highlight .sr {  /* Literal.String.Regex */
+  color: #009926;
+}
+.highlight .ss {  /* Literal.String.Symbol */
+  color: #990073;
+}
+
+.highlight .w {   /* Text.Whitespace */
+  color: #bbbbbb;
+}

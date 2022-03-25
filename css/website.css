@@ -1,0 +1,318 @@
+/*******************
+ * BASICS
+ ******************/
+:root {
+  --cardinal-red: #8C1515;
+  --caltech-orange: #FF6C0C;
+  --schwarzman-purple: #80298F;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  text-decoration: none !important;
+}
+
+.cardinal-red {
+  color: var(--cardinal-red) !important;
+}
+.caltech-orange {
+  color: var(--caltech-orange) !important;
+}
+.schwarzman-purple {
+  color: var(--schwarzman-purple) !important;
+}
+
+img {
+  max-width: 100%;
+}
+
+/*******************
+ * HEADERS
+ ******************/
+header {
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+  text-shadow: 0 0 1.5rem black;
+}
+
+.header-page {
+  background-color: #159957;
+  background-image: linear-gradient(120deg, #155799, #159957);
+}
+
+.page-description {
+  padding-top: 0.25rem;
+}
+
+/*******************
+ * FOOTER
+ ******************/
+.site-footer {
+  padding: 1rem 0;
+}
+
+/*******************
+ * HOME
+ ******************/
+.header-home {
+  background: url("../images/banner_home.jpg") center center/cover;
+}
+
+#profile-pic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile-pic img {
+  width: 90%;
+  max-width: 8rem;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 0 1.5em black;
+}
+
+.social a {
+  color: white;
+}
+
+.intro {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+/*******************
+ * POSTS LIST
+ ******************/
+.post-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.post-list li {
+  margin-bottom: 1.5em;
+}
+
+.post-meta {
+  font-size: 0.8rem;
+  color: grey;
+}
+
+.post-tag {
+  background: #f8f9fa;
+  border-radius: 0.3rem;
+  padding: 0 0.3rem;
+  margin: 0 0.3rem;
+}
+
+/*******************
+ * POSTS
+ ******************/
+.post-meta-container {
+  margin: 1rem 0;
+}
+
+/* Content inside .callout is responsible for having bottom margin or padding */
+.callout {
+  border-left: 0.25rem solid #5bc0de;
+  padding-left: 0.75rem;
+}
+
+/*******************
+ * PROJECTS and ABOUT
+ ******************/
+.content-row {
+  margin-bottom: 1rem;
+}
+
+.content-row img {
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.content-row .image-wrapper {
+  color: grey;
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.content-row a.btn {
+  margin-bottom: 0.5rem;
+}
+
+/*******************
+ * GENERAL
+ ******************/
+body {
+  position: relative;  /* for Scrollspy */
+  overflow-wrap: break-word;  /* put long words on new line before trying to break them */
+}
+
+/* Make buttons rectangular: override the Bootstrap default */
+.btn {
+  border-radius: 0;
+  transition: all .3s ease-in-out;
+}
+
+h1.section-title {
+  color: var(--cardinal-red);
+  margin: 1em 0em 0.7em;
+}
+
+/* Code
+ * - inline code is simply <code>...</code>
+ * - code blocks are <div class="highlight"><pre class="highlight"><code>...</code></pre></div>
+ */
+
+pre, code { /* all code */
+  color: #567482;
+  font: 0.9rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
+
+  /* do not break words */
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* Properties for inline code only. They are overwritten by the `pre code`
+ * selector below for code blocks. */
+code {
+  background-color: #f3f6fa;
+  border-radius: 0.3rem;
+  padding: 2px 4px;
+}
+
+pre { /* generic <pre> */
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: solid 1px #dce6f0;
+  border-radius: 0.3rem;
+  line-height: 1.45;
+  -webkit-overflow-scrolling: touch;
+}
+
+pre code { /* code blocks only */
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+blockquote {
+  border-left: 0.25rem solid #dce6f0;
+  color: #819198;
+  padding-left: 0.75rem;
+}
+blockquote > :first-child {
+  margin-top: 0;
+}
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* Content inside <details> is responsible for having bottom margin or padding */
+details {
+  background-color: #e8e9ea;
+  border-bottom: 1px solid #e8e9ea;
+  margin-bottom: 1rem;
+  padding: 0.2rem 0.75rem 0;
+}
+summary {
+  font-style: italic;
+  padding-bottom: 0.25rem;
+}
+
+table {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;  /* to match paragraphs */
+  overflow: auto;
+  word-break: normal;
+  -webkit-overflow-scrolling: touch;
+}
+table th {
+  font-weight: bold;
+}
+table th,
+table td {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e9ebec;
+}
+
+dl {
+  padding: 0;
+}
+dl dt {
+  padding: 0;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+dl dd {
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+hr {
+  height: 2px;
+  padding: 0;
+  margin: 1rem 0;
+  background-color: #eff0f1;
+  border: 0;
+}
+
+/*******************
+ * TOC
+ * - inspired by the right sidebar on https://getbootstrap.com/docs/4.4/
+ ******************/
+.toc-nav { /* <nav> */
+  position: sticky;
+  top: 0;
+  height: min-content;
+  max-height: 100vh;
+  overflow-y: auto;
+  border-left: 1px solid #eee;
+  padding-bottom: 0.5rem;
+
+  /* Hide scrollbar */
+  -ms-overflow-style: none;  /* IE and Edge (old) */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for webkit browsers */
+.toc-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.toc-nav ul {
+  margin: 0;
+  padding-left: 1rem;  /* indent each level by an additional 1rem */
+  list-style-type: none;
+  display: block;
+}
+
+.toc-nav li a {
+  display: block;
+  margin-top: 0.3rem;
+  color: #77757a;
+  padding: 0;
+}
+
+.toc-nav li a:hover,
+.toc-nav li a.active {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.toc-nav nav {
+  position: sticky;
+  top: 0;
+  padding-right: 0;  /* remove extra padding from Bootstrap's .navbar */
+}
+
+#show-sidebar {
+  position: sticky;
+  top: 0.5rem;
+  margin-top: 0.5rem;  /* match `top: 0.5rem` when the button isn't "stuck" yet */
+  float: right;
+}

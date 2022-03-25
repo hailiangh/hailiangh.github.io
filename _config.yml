@@ -1,5 +1,33 @@
-title: Cayman theme
-# description: Cayman is a clean, responsive theme for GitHub Pages.
-show_downloads: false
-google_analytics:
-# theme: jekyll-theme-cayman
+title: Chris Yeh
+description: ML for Sustainability | PhD Student @ Caltech
+
+highlighter: rouge
+date_format: "%b %-d, %Y"
+
+# By default, the navbar creates a link for every "page" containing a `title`
+# attribute, so long as the title does not include "404". Override the
+# default links by defining a `site.header_paths` array:
+# header_paths:
+# - about.md
+# - projects.md
+
+##### SOCIAL INTEGRATION #####
+github_username: chrisyeh96
+linkedin_username: chrisyeh96
+twitter_username: yeh_im_excited
+scholar_userid: 6Omq2pcAAAAJ
+orcid_id: 0000-0002-7624-6168
+
+##### BUILD SETTINGS #####
+# incremental: true
+
+exclude:
+  - env.yml
+  - env_ruby.yml
+  - LICENSE
+  - README.md
+
+# strip all unncessary whitespace and comments
+# http://jch.penibelst.de/
+compress_html:
+  blanklines: true

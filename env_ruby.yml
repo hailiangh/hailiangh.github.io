@@ -1,0 +1,9 @@
+# Install and update this environment with
+# conda env update -f env_ruby.yml --prune
+name: ruby
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - ruby
+  - gxx_linux-64  # for compiling "native" gem extensions
