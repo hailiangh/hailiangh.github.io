@@ -14,23 +14,17 @@ $$
 , where $$F$$, $$B$$ are the square matrices of size `n`. $$u_{k-1}$$ is the input control vector of size `n`. $$w_{k-1}$$ is the noise input vector. 
 The noise input follows the normal distribution with covariance $$Q$$.    
 $$w_{k-1}\sim N(0,Q)$$  
-<!-- ```
-w[k-1] ~ N(0,Q)
-```   -->
 We want to estimate the state vector of the system `x`, which is not known directly.   
 What we know are the input of the sytem `u` and an obervation of the state vector: `z`. The relationship of `z` and `x` can be illustrated as:
-```
-z[k] = H * x[k] + v[k]
-```
+$$  
+w_{k-1}\sim N(0,Q)
+$$  
 , where `H` is a `n`-dimensional square matrix, and `v[k]` is the observation noise vector. `v[k]` also follows the normal distribution with covariance `R`.
-```
-v[k] ~ N(0,R)
-```  
 
 Now we have an estimation system, where we have two known inputs `u[k]` and `z[k]`. And the estimated `x[k]` is the output. The estimation process is shown in the figure below.
 ![fig1](./pics/lab7_manual_KalmanFilter_EstimateX.png)
 
-For this lab, we use vehicle position as an example. Assume the state x=[■(p@v)], where p is the position of the vehicle and v is the velocity. Both p and v is 1 dimension. Also, assume u is the acceleration. Then, F=[■(1&∆t@0&1)], B=[■(0.5〖∆t〗^2@1)]. Assume the measurement z is x itself with noise, then H=[■(1&0@0&1)]. In this lab, we assume both Q and R are [■(0.2&0@0&0.2)], and the initial state x_0=[■(0@0)], and P_0=[■(0&0@0&0)].
+For this lab, we use vehicle position as an example. Assume the state $$x=\begin{bmatrix}a & b\\c & d\end{bmatrix}$$, where p is the position of the vehicle and v is the velocity. Both p and v is 1 dimension. Also, assume u is the acceleration. Then, F=[■(1&∆t@0&1)], B=[■(0.5〖∆t〗^2@1)]. Assume the measurement z is x itself with noise, then H=[■(1&0@0&1)]. In this lab, we assume both Q and R are [■(0.2&0@0&0.2)], and the initial state x_0=[■(0@0)], and P_0=[■(0&0@0&0)].
 $$x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}$$
   
 $$w_{k-1}\sim N(0,Q)$$
