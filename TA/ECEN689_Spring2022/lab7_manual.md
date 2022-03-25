@@ -27,47 +27,8 @@ Now we have an estimation system, where we have two known inputs `u[k]` and `z[k
 For this lab, we use vehicle position as an example. Assume the state $$x=\begin{bmatrix}p\\ v\end{bmatrix}$$, where $$p$$ is the position of the vehicle and $$v$$ is the velocity. Both $$p$$ and $$v$$ are scalars. Also, assume $$u$$ is the acceleration. Then, $$F=\begin{bmatrix} 1 & ∆t \\ 0 & 1 \end{bmatrix}$$, $$B=\begin{bmatrix} 0.5∆t^2 \\ 1\end{bmatrix} $$. Assume the measurement $$z$$ is $$x$$ itself with noise, then $$H=\begin{bmatrix} 1 & 0 \\ 0 & 1\end{bmatrix} $$.  
 In this lab, we assume both $$Q$$ and $$R$$ are $$\begin{bmatrix} 0.2 & 0 \\ 0.2 & 0\end{bmatrix} $$, and the initial state $$x_0 = \begin{bmatrix} 0 \\ 0\end{bmatrix} $$, and $$P_0=\begin{bmatrix} 0 & 0 \\ 0 & 0\end{bmatrix} $$.
 
-### Lab Design on Kalman Filters
-Given a bitstream, we can encode it by performing convolution in a window of length `K`. The output from each time convolution is carried out is the parity bit. In each clock cycle, we can do `r` convolutions and get `r` parity bits.
-For example, assume the parity bits are calculated by:
-```
-p0[n]=x[n]⊕x[n-1]⊕x[n-2]
-p1[n]=x[n]⊕x[n-1]
-```
-In the above case, `r=2` since there are two parity bits in each cycle, and `K=3` since the largest length of the convolution window is 3 (from x[n]  to x[n-2]). Note that the `XOR` here is the mod 2 addition.
-
-Suppose a bitstream is `101110`, where the leftmost bit is the earliest bit (x[0]). We assume `x[-1]` and `x[-2]` are 0, then the first two parity bits (`p0[0]` and `p1[0]`) are 1 each, which gives `11`. The second is `11`, the third is `01`, all the way to the sixth, which is `01`. Therefore, the length of the output encoding code is `r x length(input bitstream)`.
-
-### Viterbi encoder
-Given an encoded bitstream, Viterbi decoder is employed to decode it. First, we need to find a reliable way to represent our encoding system. For the encoding example detailed above, we can represent it by the circuit shown in the figure below. In this design, there are two registers saving `x[n-1]` and `x[n-2]`.
-![pic1](./pics/lab6_manual_ViterbiEncodingSystem.png)
-
-
-Besides, we can also represent the encoding system using a finite state machine as shown in the figure below. The two-bit number in each state represents the values stored in the registers (`x[n-1]` and `x[n-2]`), with the leftmost bit representing the most recent bit (`x[n-1]`).  
-The length of the bits in each state is `K-1`. Each `x/yy` on edge represents that if the next bit is `x`, the parity bits output is `yy`. The length of the bits of `yy` is `r`.
-
-![pic2](./pics/lab6_manual_FiniteStateMachine.png)
-
-### Viterbi decoder
-There is a structure called Trellis as shown in the figure below. In a column, the four nodes (squared boxes) represent all four states (`00`, `01`, `10`, `11`) in a cycle. Each column represents a cycle. And the arrows between columns represents the transition between the states. This structure describes the change of states each time a bit (`x[n]`) is given as input. In the example, the output bitstream (`yy`) here is `11 11 01 00 01 10`.  
-
-![pic3](./pics/lab6_manual_TrellisStructure.png)
-
-To decode, given an encoded bitstream, we need to find out the path in Trellis which has the highest probability (lowest error) to generate the encoded bitstream.
-
-There are three steps to decode in the Trellis structure:  
-The first step is to calculate the branch metrics. For each `r` bits of the encoded bitstream, an error is calculated between itself and the output (`yy`) of each edge present in one column of the Trellis structure. This error is the Hamming distance. An example is shown in the figure below.
-
-![pic4](./pics/lab6_manual_HammingDistanceCalculation.png)
-
-In the example above, the two-bit value of the encoded bitstream (parity bits) is `00`. Each grey arrow represents a state transition from cycle `i` to `i+1`. The red number is the Hamming distance between the parity bits `00` and the outputs of the state maching. There are two edges that can perfectly fit it with 0 error, which are edges `00 -> 00` and `10 -> 11`. In the Trellis diagram, you need to calculate the errors for 48 times in total (6 pairs of encoded bits times 8 Hamming distances in each column). If the encoded stream is `11 11 01 00 01 10`, then you need to calculate the errors using `11` with all 8 outputs in the first column, the errors using `11` with all 8 outputs in the second column, … until the last pair `10` with all 8 outputs of the last column.
-
-The second step is to calculate the least error on each node (Path Metrics) in Trellis. Since we assume initially, all the registers are 0 (`x[-1] = 0`, `x[-2] = 0`), we set the error of the state `00` in the first column to `0` and all the other nodes in the first column as `∞`. Besides, all the errors of other nodes in Trellis are set as `∞`. Next, starting from the second column, we check each edge between column `i-1` and column `i`. If there is an edge `e` from a node `m` in column `i-1` and a node `n` in column `i`, and `error(m) + error(e) < error(n)`, then we do an update `error(n) = error(m) + error(e)`, and save the best edge `e` for node `n`.
-
-The third step is backtracking. Starting from the last column, we always find the node with least error on that column, and backtrack all the way to the first column. When backtracking one edge, the input of the edge is saved (for instance, if an edge is `1/10`, the input is `1`), and the decoded bitstream is in the reversed order of the saved edge inputs.
-
 ## 2. Lab Design on Viterbi Decoder
-In this section, we need to implement the Viterbi module in Vivado. Before you proceed, please download “Lab6_student_code.zip” from Piazza and extract it. After extraction, you will get a folder named as “Lab6_student_code/”.
+In this section, we need to implement the Kalman filter module in Vivado. Before you proceed, please download **Lab7_student_code.zip** from Piazza and extract it. After extraction, you will get a folder named as **Lab7_student_code/**.
 
 Copy the folder “base_vivado” and rename it as “lab6_vivado”. From the source panel, remove unnecessary source files. Open the project by double-click on “lab6_vivado/base/base.xpr”.
 
