@@ -17,6 +17,9 @@ $$x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}$$
 , where $F$, $B$ are the square matrices of size `n`. $u_{k-1}$ is the input control vector of size `n` that can update the state vector from $x_{k-1}$ to $x_{k}$. $w_{k-1}$ is the noise input vector.  
 $$w_{k-1}\sim N(0,Q)$$ -->
 Kalman filter estimates the state of a system based on the input and observation of the system. Assume we have a linear system represented by:  
+$$
+x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}
+$$
 ```
 x[k] = F * x[k-1] + B * u[k-1] + w[k-1]
 ```
