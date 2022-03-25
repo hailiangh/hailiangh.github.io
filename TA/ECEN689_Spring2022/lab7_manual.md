@@ -30,28 +30,13 @@ In this lab, we assume both $$Q$$ and $$R$$ are $$\begin{bmatrix} 0.2 & 0 \\ 0.2
 ## 2. Lab Design on Viterbi Decoder
 In this section, we need to implement the Kalman filter module in Vivado. Before you proceed, please download **"Lab7_student_code.zip"** from Piazza and extract it. After extraction, you will get a folder named as **"Lab7_student_code/"**.
 
-Copy the folder **"base_vivado"** and rename it as **"lab7_vivado"**. From the source panel, remove unnecessary source files. Open the project by double-click on **"lab6_vivado/base/base.xpr"**.
+Copy the folder **"base_vivado"** and rename it as **"lab7_vivado"**. From the source panel, remove unnecessary source files. Open the project by double-click on **"lab7_vivado/base/base.xpr"**.
 
 In this lab, you need to use **16-bit signed fixed-point** number for calculation, with **10 bits** for the fractional part.  
 
-You are required to design Viterbi decoder with `r=2` and `K=3`. The length of the input code length `10`, thus, the length of the output code length is `5`.
+- In **"kalman.v"**, `n` is an input indicate this is the `nth` input. `u` and `z` are the acceleration and the measurement respectively. The metrics `n`, `u`, `z` will be updated on each positive edge of `clk`, i.e., for each positive edge of the clock, there is a set of new input. You are not required to use all the inputs, but the input would be continuously sent. `x0`, `P0` are the initial states. The output `n_0` indicates the output calculated from `n_0th` input. The estimated state is `x0` and `outen` indicates if there is output in this corresponding clock cycle. 
 
-In `viterbi.v`, `codein` is the encoded bitstream which needs to be decoded. The highest `r` bits (bit `9` to bit `8`) are the earliest two parity bits (`p0[0]`,`p1[0]`).  
-The `states` input contains information about the state output (`yy`) given the input (`x`).  
-The structure of it is:  
-`[yy | x = 1, state = 11][yy | x = 0, state = 11] [yy |  x = 1, state = 10][yy | x = 0, state = 10] [yy | x = 1, state = 01][yy | x = 0, state = 01][yy | x = 1, state = 00][yy | x = 0, state = 00]`    
-, with each `[]` denoting `r` bits.  
-For the two-bit value denoting the states, the highest bit here denotes the latest bit (`state = x[n-1]x[n-2`). For example, if the current state is `10`, and the input is `1`, then, the next state is `11`.
 
-You are required to write Verilog code such that:  
-- When `rst` is `0`, `finish` is set to `0`.  
-- When `rst` is `1`, the module starts decoding.  
-- The decoded bitstream is finally put at the output port `codeout`. The first data is the earliest bit (`x[0]`).  
-- When the `codeout` is ready, `finish` is set to `1`, and both `codeout` and `finish` are required to  hold their values.
-
-After you designed the decoder, run simulation based on “viterbi_tb.v”. You should see the decoded bitstream.  
-The figure below shows the outputs of PMU corresponding to the inputs in the test bench.  
-![pic4](./pics/lab6_manual_PMU.png)
 
 ## 3. Implementation on the FPGA
 In this section, we will implement the design on the FPGA.  
