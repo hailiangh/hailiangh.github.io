@@ -1,11 +1,17 @@
----
-layout: default
-num_posts: 5
-use_fontawesome: true
-use_code: true
-use_math: true
----
+# H1
 
-I am a 2nd-year PhD student in Computing and Mathematical Sciences at [<span class="caltech-orange">Caltech</span>](https://cms.caltech.edu/), advised by professors [Yisong Yue](http://www.yisongyue.com/) and [Adam Wierman](https://adamwierman.com/). My research is in statistical machine learning, motivated by applications in sustainability.
+## H2
 
-Previously, I studied Computer Science at [<span class="cardinal-red">Stanford</span>](https://cs.stanford.edu/) where I was a member of the [Sustainability and AI Lab](https://sustain.stanford.edu/) and president of [Code the Change](https://codethechange.stanford.edu/). I also spent a year studying public policy as a [<span class="schwarzman-purple">Schwarzman Scholar</span>](https://www.schwarzmanscholars.org/) at Tsinghua in Beijing.
+## TA
+
+
+[FPGA Information Processing Systems - Spring 2022](TA/ECEN689_Spring2022.md)
+
+
+[test post](_posts/2022-03-12-test-blog.md)
+
+$$
+x = x + 1
+$$
+
+[another page](another-page.md)
