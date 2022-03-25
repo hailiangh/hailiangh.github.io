@@ -13,3 +13,5 @@
 $$
 x = x + 1
 $$
+
+[another page](another-page.md)
