@@ -6,24 +6,17 @@ use_math: true
 ---
 # Kalman Filter on FPGA
 ## 1. Introduction
-
-$$E=mc^2$$
-
 For this lab, we need to design the Kalman filter.  
-
-<!-- Kalman filter estimates the state of a system. Assume $x$ is the state vector we want to estimate, and the system can be illustrated by:  
-$$x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}$$
-, where $F$, $B$ are the square matrices of size `n`. $u_{k-1}$ is the input control vector of size `n` that can update the state vector from $x_{k-1}$ to $x_{k}$. $w_{k-1}$ is the noise input vector.  
-$$w_{k-1}\sim N(0,Q)$$ -->
 Kalman filter estimates the state of a system based on the input and observation of the system. Assume we have a linear system represented by:  
 $$
 x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}
-$$
-, where $F$, $B$ are the square matrices of size `n`. `u[k-1]`  is the input control vector of size `n`. `w[k-1]` is the noise input vector. 
-The noise input follows the normal distribution with covariance `Q`.  
-```
+$$  
+, where $$F$$, $$B$$ are the square matrices of size `n`. $$u_{k-1}$$ is the input control vector of size `n`. $$w_{k-1}$$ is the noise input vector. 
+The noise input follows the normal distribution with covariance $$Q$$.    
+$$w_{k-1}\sim N(0,Q)$$  
+<!-- ```
 w[k-1] ~ N(0,Q)
-```  
+```   -->
 We want to estimate the state vector of the system `x`, which is not known directly.   
 What we know are the input of the sytem `u` and an obervation of the state vector: `z`. The relationship of `z` and `x` can be illustrated as:
 ```
@@ -156,3 +149,4 @@ umount /mnt/
 
 [anotherpage](./../../another-page.md)
 
+$$E=mc^2$$
