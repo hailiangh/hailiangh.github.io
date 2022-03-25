@@ -60,18 +60,24 @@ In this section, we will implement the design on the FPGA.
 - Click on **"Generate Bitstream"** to invoke the design flow and generate the bitstream. After the bitstream is generated, click **"File -> Export -> Export Hardware"**. Check the box **"Include Bitstream"**, click **"OK"**.
 - Please launch SDK and generate the boot image (**BOOT.bin**) as in the previous lab with one exception:
     Use the bitstream file **base/base.sdk/top_viterbi_hw_platform_0/top_viterbi.bit**.
-- Copy the updated BOOT.bin and lab6_viterbi_test into your SD card, boot the FPGA and run the test with command:
-`./lab6_viterbi_test`
-- Take a screen shot of the terminal when the result shows.  
+- Copy the updated **BOOT.bin**, **lab7_data** and **lab7_kalman_test** into your SD card, boot the FPGA and run the test with command:
+    ```  
+    ./lab7_kalman_test [Clock cycles between each sampling]
+    // For example:
+    ./lab7_kalman_test 10
+    ```  
+- You may need to adjust your sampling rate for a better results.
+- Take a screen shot of the terminal when the result shows.
 - Unmount the SD card, exit the serial communication and turn off your FPGA.
 
 Some commonly used commands:  
 ```
+picocom -b 115200 -r -l /dev/ttyUSB1
 mount /dev/mmcblk0p1 /mnt/
 cd /mnt/
 insmod transfpga.ko
 mknod /dev/transfpga c 245 0
-./lab6_viterbi_test
+./lab7_kalman_test [Clock cycles between each sampling]
 cd /
 umount /mnt/
 ```
