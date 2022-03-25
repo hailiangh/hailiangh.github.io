@@ -10,7 +10,6 @@ use_math: true
 $$E=mc^2$$
 
 For this lab, we need to design the Kalman filter.  
-<!-- $$x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}$$ -->
 
 <!-- Kalman filter estimates the state of a system. Assume $x$ is the state vector we want to estimate, and the system can be illustrated by:  
 $$x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}$$
@@ -20,10 +19,7 @@ Kalman filter estimates the state of a system based on the input and observation
 $$
 x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}
 $$
-```
-x[k] = F * x[k-1] + B * u[k-1] + w[k-1]
-```
-, where `F`, `B` are the square matrices of size `n`. `u[k-1]`  is the input control vector of size `n`. `w[k-1]` is the noise input vector. 
+, where $F$, $B$ are the square matrices of size `n`. `u[k-1]`  is the input control vector of size `n`. `w[k-1]` is the noise input vector. 
 The noise input follows the normal distribution with covariance `Q`.  
 ```
 w[k-1] ~ N(0,Q)
