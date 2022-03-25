@@ -7,7 +7,7 @@ usemathjax: true
 # Viterbi Decoder on FPGA
 ## 1. Introduction
 
-$$E=mc^2$$
+<!-- $$E=mc^2$$ -->
 
 For this lab, we need to design the Kalman filter.  
 <!-- $$x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}$$ -->
@@ -16,6 +16,16 @@ For this lab, we need to design the Kalman filter.
 $$x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}$$
 , where $F$, $B$ are the square matrices of size `n`. $u_{k-1}$ is the input control vector of size `n` that can update the state vector from $x_{k-1}$ to $x_{k}$. $w_{k-1}$ is the noise input vector.  
 $$w_{k-1}\sim N(0,Q)$$ -->
+Kalman filter estimates the state of a system based on the input and observation of the system. Assume we have a linear system denoted by:  
+<img src="https://render.githubusercontent.com/render/math?math=x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}">  
+, where `F`, `B` are the square matrices of size `n`. <img src="https://render.githubusercontent.com/render/math?math=u_{k-1}">   is the input control vector of size `n` that can update the state vector from
+ <!-- $x_{k-1}$ to $x_{k}$. $w_{k-1}$ is the noise input vector. -->
+
+
+And we want to estimate the state vector `x`
+$$x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}$$
+  
+$$w_{k-1}\sim N(0,Q)$$
 
 
 ### Convolutional Coding
