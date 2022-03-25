@@ -28,11 +28,11 @@ For this lab, we use vehicle position as an example. Assume the state $$x=\begin
 In this lab, we assume both $$Q$$ and $$R$$ are $$\begin{bmatrix} 0.2 & 0 \\ 0.2 & 0\end{bmatrix} $$, and the initial state $$x_0 = \begin{bmatrix} 0 \\ 0\end{bmatrix} $$, and $$P_0=\begin{bmatrix} 0 & 0 \\ 0 & 0\end{bmatrix} $$.
 
 ## 2. Lab Design on Viterbi Decoder
-In this section, we need to implement the Kalman filter module in Vivado. Before you proceed, please download **Lab7_student_code.zip** from Piazza and extract it. After extraction, you will get a folder named as **Lab7_student_code/**.
+In this section, we need to implement the Kalman filter module in Vivado. Before you proceed, please download **"Lab7_student_code.zip"** from Piazza and extract it. After extraction, you will get a folder named as **"Lab7_student_code/"**.
 
-Copy the folder “base_vivado” and rename it as “lab6_vivado”. From the source panel, remove unnecessary source files. Open the project by double-click on “lab6_vivado/base/base.xpr”.
+Copy the folder **"base_vivado"** and rename it as **"lab7_vivado"**. From the source panel, remove unnecessary source files. Open the project by double-click on **"lab6_vivado/base/base.xpr"**.
 
-Add all the source files to the project from “Lab6_student_code/” and implement your design in "viterbi.v" according to Section 1.
+In this lab, you need to use **16-bit signed fixed-point** number for calculation, with **10 bits** for the fractional part.  
 
 You are required to design Viterbi decoder with `r=2` and `K=3`. The length of the input code length `10`, thus, the length of the output code length is `5`.
 
