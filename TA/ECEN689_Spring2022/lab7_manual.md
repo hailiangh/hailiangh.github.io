@@ -49,7 +49,7 @@ In this lab, you need to use **16-bit signed fixed-point** number for calculatio
 In this section, we will implement the design on the FPGA.  
 - Right click **"top_kalman.v"** in the **"source"** panel and click **"set as top"** (If this file is shown in bold font, it is already the top module).   
 
-- The block ram settings for this lab is shown in the table below.
+- The block RAM settings for this lab is shown in the table below.
   
     | Block RAM Name | Memory Type |    Port A Settings | Port B Settings|
     | ------------- | ------------- | ------------- | ------------- |
@@ -57,9 +57,9 @@ In this section, we will implement the design on the FPGA.
     | blk_mem_gen_1  | Single Port RAM  | Width: 96, Depth: 1000, Read First, Always Enabled  | N/A  |
     | blk_mem_gen_2  | Single Port RAM  | Width: 32, Depth: 1000, Read First, Always Enabled  | N/A  |
 
-- Now, click generate bitstream. After the bitstream is generated, click file->export->export hardware. Check include bitstream, click “ok”.
-- Please launch SDK and generate the boot image (BOOT.bin) as in the previous lab with one exception:
-Use the bitstream file base/base.sdk/top_viterbi_hw_platform_0/top_viterbi.bit.
+- Click on **"Generate Bitstream"** to invoke the design flow and generate the bitstream. After the bitstream is generated, click **"File -> Export -> Export Hardware"**. Check the box **"Include Bitstream"**, click **"OK"**.
+- Please launch SDK and generate the boot image (**BOOT.bin**) as in the previous lab with one exception:
+    Use the bitstream file **base/base.sdk/top_viterbi_hw_platform_0/top_viterbi.bit**.
 - Copy the updated BOOT.bin and lab6_viterbi_test into your SD card, boot the FPGA and run the test with command:
 `./lab6_viterbi_test`
 - Take a screen shot of the terminal when the result shows.  
