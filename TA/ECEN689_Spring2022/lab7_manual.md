@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 7 - Viterbi Decoder on FPGA
+title: Lab 7 - Kalman Filter on FPGA
 description: ECEN 489/689 - Spring 2022
 use_math: true
 use_code: true
