@@ -83,22 +83,27 @@ In this section, we will implement the design on the FPGA.
     umount /mnt/
     ```
 
-## 4. Question
-- Is Viterbi Decoder guaranteed to decode the original data correctly? Why?
+## 4. Matrix Operations
+In this lab, most of the operations involved are matrix multiplication and inversion. As a warm-up, you are asked to write a testbench to test the functionality of the module `matmul` and `divider`. Please refer to the test benches in the previous labs, write a test bench that satisfies the following functionalities:
+- Calculate the result of equation $$\begin{bmatrix} 1 & 2 \\ 3 & 4\end{bmatrix} \times {bmatrix} 0.5 & 0 \\ 0 & 1.5\end{bmatrix}$$ with the module `matmul`.
+- Calculate the result of equation $$\begin{bmatrix} 1 & 2 \\ 3 & 4\end{bmatrix} \times {bmatrix} 0.5  \\ 1 \end{bmatrix}$$ with the module `matmul`.
+- Calculate the result of equation $$\frac{1}{2.0}  \\ 1 \end{bmatrix}$$ with the module `divider`.  
+
+Please include the screenshots the simulation results, and verify if the results are correct. Remember that we are using **16-bit signed fixed-point** numbers for the calculation, with **10 bits** for the fractional part.  
 
 ## 5. Pre-lab Submission
-- Please only submit one PDF file, containing your answers to the question in the previous section.  
+- Please only submit one PDF file, containing your work in Section 4.   
 - Please name the PDF file as "Lab#_Prelab_Section#_LastName_FirstName.pdf".  
-- Please submit the PDF file on Canvas before March 21 (Monday) 11:59 pm.  
+- Please submit the PDF file on Canvas before March 28 (Monday) 11:59 pm.  
 
 
 ## 6. Post-lab Submission
 - Please only submit one PDF file, containing the following items:  
-    - Screenshots of the terminal after running the command `./lab6_viterbi_test`  
+    - Screenshots of the terminal after running the command `./lab7_kalman_test [Clock cycles between each sampling]`  
     - A few words explaining the results
     - Screenshots of your code in this design
 - Please name the PDF file as "Lab#_Postlab_Section#_LastName_FirstName.pdf".  
-- Please submit the PDF file on Canvas before March 25 (Friday) 11:59 pm.  
+- Please submit the PDF file on Canvas before March 31 (Friday) 11:59 pm.  
 
 
 [anotherpage](./../../another-page.md)
