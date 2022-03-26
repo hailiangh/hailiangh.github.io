@@ -7,19 +7,20 @@ use_code: true
 ---
 # Kalman Filter on FPGA
 ## 1. Introduction
-For this lab, we need to design the Kalman filter. Kalman filter estimates the state of a system based on the input and observation of the system. Assume we have a linear system represented by:  
-$$
+For this lab, we need to design the Kalman filter. Kalman filter estimates the state of a system based on the input and observation of the system.  
+Assume we have a linear system represented by 
+$$ 
 x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}
-$$  
+$$
 , where $$F$$, $$B$$ are the square matrices of size $$n$$. $$u_{k-1}$$ is the input control vector of size $$n$$. $$w_{k-1}$$ is the noise input vector. 
-The noise input follows the normal distribution with covariance $$Q$$.    
+The noise input follows the normal distribution with covariance $$Q$$.  
 $$w_{k-1}\sim N(0,Q)$$  
-We want to estimate the state vector of the system $$x$$, which is not known directly.   
-What we know are the input of the sytem $$u$$ and an obervation of the state vector: $$z$$. The relationship of $$z$$ and $$x$$ can be illustrated as:
+We want to estimate the state vector of the system ($$x$$), which is not known directly.   
+What we know are the input of the sytem ($$u$$) and the obervation of the state vector ($$z$$). The relationship of $$z$$ and $$x$$ can be illustrated as 
 $$  
-w_{k-1}\sim N(0,Q)
-$$  
-, where $$H$$ is a $$n$$-dimensional square matrix, and $$v_k$$ is the observation noise vector. $$v_k$$ also follows the normal distribution with covariance $$R$$.
+Z_k = H x_k + v_k
+$$
+, where $$H$$ is a $$n$$-dimensional square matrix, and $$v_k$$ is the observation noise vector. $$v_k$$ also follows the normal distribution with covariance $$R$$. $$v_k \sim N(0,R)$$  
 
 Now we have an estimation system, where we have two known inputs $$u_k$$ and $$z_k$$. And the estimated $$x_k$$ is the output. The estimation process is shown in the figure below.
 ![fig1](./pics/lab7_manual_KalmanFilter_EstimateX.png)
