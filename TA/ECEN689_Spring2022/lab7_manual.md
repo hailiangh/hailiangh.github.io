@@ -87,7 +87,7 @@ $$
 A = \begin{bmatrix} 1 & 2 \\ 3 & 4\end{bmatrix},
 B = \begin{bmatrix} 0.5 & 0 \\ 0 & 1.5\end{bmatrix},
 x = \begin{bmatrix} 0.5 \\ 1.5\end{bmatrix},
-d = 2.5
+d = 0.25
 $$
 - Calculate the result $$A \times B$$ with the module `matmul`.
 - Calculate the result $$A \times x$$ with the module `matmul`.
