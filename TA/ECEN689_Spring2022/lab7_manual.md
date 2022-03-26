@@ -84,16 +84,16 @@ In this section, we will implement the design on the FPGA.
     ```
 
 ## 4. Matrix Operations
-In this lab, most of the operations involved are matrix multiplication and inversion. As a warm-up, you are asked to write a testbench to test the functionality of the module `matmul` and `divider`. Please refering to the test benches in the previous labs, write a test bench that satisfies the following functionalities:
+In this lab, most of the operations involved are matrix multiplication and inversion. As a warm-up, you are asked to write a testbench to test the functionality of the module `matmul` and `divider`. Please refering to the test benches in the previous labs, write a test bench that satisfies the following functionalities:  
 Suppose we have 
 $$
-A = \begin{bmatrix} 1 & 2 \\ 3 & 4\end{bmatrix}
-B = \begin{bmatrix} 0.5 & 0 \\ 0 & 1.5\end{bmatrix}
+A = \begin{bmatrix} 1 & 2 \\ 3 & 4\end{bmatrix},
+B = \begin{bmatrix} 0.5 & 0 \\ 0 & 1.5\end{bmatrix},
 x = \begin{bmatrix} 0.5 \\ 1.5\end{bmatrix}
 $$
 - Calculate the result $$A \times B$$ with the module `matmul`.
 - Calculate the result $$A \times x$$ with the module `matmul`.
-- Calculate the result of equation $$\frac{1}{2.0}\end{bmatrix}$$ with the module `divider`.  
+- Calculate the result of equation $$\frac{1}{2.0}$$ with the module `divider`.  
 
 Please include the screenshots the simulation results, and verify if the results are correct. Remember that we are using **16-bit signed fixed-point** numbers for the calculation, with **10 bits** for the fractional part.  
 
