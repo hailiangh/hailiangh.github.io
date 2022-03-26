@@ -84,7 +84,7 @@ In this section, we will implement the design on the FPGA.
     ```
 
 ## 4. Matrix Operations - Pre-lab Assignment
-In this lab, most of the operations involved are matrix multiplication and inversion. As a warm-up, you are asked to write a testbench to test the functionality of the module `matmul` and `divider`. Please refering to the test benches in the previous labs, write a test bench that satisfies the following functionalities:  
+In this lab, most of the operations involved are matrix multiplication and inversion. In the code provided, we have modules `matmul` for $$2\times2$$ matrix multiplication and `divider` for calculating the reciprocal of a fixed-point number. As a warm-up, you are asked to write a testbench to test the functionality of the module `matmul` and `divider`. Please refering to the test benches in the previous labs, write a test bench that satisfies the following functionalities:  
 Suppose we have 
 $$
 A = \begin{bmatrix} 1 & 2 \\ 3 & 4\end{bmatrix},
