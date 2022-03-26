@@ -83,7 +83,7 @@ In this section, we will implement the design on the FPGA.
     umount /mnt/
     ```
 
-## 4. Matrix Operations
+## 4. Matrix Operations - Pre-lab Assignment
 In this lab, most of the operations involved are matrix multiplication and inversion. As a warm-up, you are asked to write a testbench to test the functionality of the module `matmul` and `divider`. Please refering to the test benches in the previous labs, write a test bench that satisfies the following functionalities:  
 Suppose we have 
 $$
