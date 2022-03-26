@@ -7,22 +7,21 @@ use_code: true
 ---
 # Kalman Filter on FPGA
 ## 1. Introduction
-For this lab, we need to design the Kalman filter.  
-Kalman filter estimates the state of a system based on the input and observation of the system. Assume we have a linear system represented by:  
+For this lab, we need to design the Kalman filter. Kalman filter estimates the state of a system based on the input and observation of the system. Assume we have a linear system represented by:  
 $$
 x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}
 $$  
-, where $$F$$, $$B$$ are the square matrices of size `n`. $$u_{k-1}$$ is the input control vector of size `n`. $$w_{k-1}$$ is the noise input vector. 
+, where $$F$$, $$B$$ are the square matrices of size $$n$$. $$u_{k-1}$$ is the input control vector of size $$n$$. $$w_{k-1}$$ is the noise input vector. 
 The noise input follows the normal distribution with covariance $$Q$$.    
 $$w_{k-1}\sim N(0,Q)$$  
-We want to estimate the state vector of the system `x`, which is not known directly.   
-What we know are the input of the sytem `u` and an obervation of the state vector: `z`. The relationship of `z` and `x` can be illustrated as:
+We want to estimate the state vector of the system $$x$$, which is not known directly.   
+What we know are the input of the sytem $$u$$ and an obervation of the state vector: $$z$$. The relationship of $$z$$ and $$x$$ can be illustrated as:
 $$  
 w_{k-1}\sim N(0,Q)
 $$  
-, where `H` is a `n`-dimensional square matrix, and `v[k]` is the observation noise vector. `v[k]` also follows the normal distribution with covariance `R`.
+, where $$H$$ is a $$n$$-dimensional square matrix, and $$v_k$$ is the observation noise vector. $$v_k$$ also follows the normal distribution with covariance $$R$$.
 
-Now we have an estimation system, where we have two known inputs `u[k]` and `z[k]`. And the estimated `x[k]` is the output. The estimation process is shown in the figure below.
+Now we have an estimation system, where we have two known inputs $$u_k$$ and $$z_k$$. And the estimated $$x_k$$ is the output. The estimation process is shown in the figure below.
 ![fig1](./pics/lab7_manual_KalmanFilter_EstimateX.png)
 
 For this lab, we use vehicle position as an example. Assume the state $$x=\begin{bmatrix}p\\ v\end{bmatrix}$$, where $$p$$ is the position of the vehicle and $$v$$ is the velocity. Both $$p$$ and $$v$$ are scalars. Also, assume $$u$$ is the acceleration. Then, $$F=\begin{bmatrix} 1 & ∆t \\ 0 & 1 \end{bmatrix}$$, $$B=\begin{bmatrix} 0.5{\Delta t}^2 \\ 1\end{bmatrix} $$. Assume the measurement $$z$$ is $$x$$ itself with noise, then $$H=\begin{bmatrix} 1 & 0 \\ 0 & 1\end{bmatrix} $$.  
@@ -35,7 +34,7 @@ Copy the folder **"base_vivado"** and rename it as **"lab7_vivado"**. From the s
 
 In this lab, you need to use **16-bit signed fixed-point** number for calculation, with **10 bits** for the fractional part.  
 
-- In **"kalman.v"**, `n` is an input indicate this is the `nth` input. `u` and `z` are the acceleration and the measurement respectively. The metrics `n`, `u`, `z` will be updated on each positive edge of `clk`, i.e., for each positive edge of the clock, there is a set of new input. You are not required to use all the inputs, but the input would be continuously sent. `x0`, `P0` are the initial states. The output `n_0` indicates the output calculated from `n_0th` input. The estimated state is `x0` and `outen` indicates if there is output in this corresponding clock cycle. 
+- In **"kalman.v"**, `n` is an input indicate this is the `nth` input. $$u$$ and $$z$$ are the acceleration and the measurement respectively. The metrics `n`, $$u$$, $$z$$ will be updated on each positive edge of `clk`, i.e., for each positive edge of the clock, there is a set of new input. You are not required to use all the inputs, but the input would be continuously sent. `x0`, `P0` are the initial states. The output `n_0` indicates the output calculated from `n_0th` input. The estimated state is `x0` and `outen` indicates if there is output in this corresponding clock cycle. 
 
 - Your system may have latency and/or delay. For example. If your system has a latency of 10 clock cycles and a delay of 4 clock cycles, your system may use the input at clock cycles 0, 10, 20 …, and output the results at the respective clock cycles of  14, 24, 34… and so on. However, output n_0 needs to indicate which input is used for calculating this output. Therefore, in the above example, at the clock cycles 14, 24, 34, n_0 should be 0, 10, 20…
 
@@ -89,11 +88,12 @@ Suppose we have
 $$
 A = \begin{bmatrix} 1 & 2 \\ 3 & 4\end{bmatrix},
 B = \begin{bmatrix} 0.5 & 0 \\ 0 & 1.5\end{bmatrix},
-x = \begin{bmatrix} 0.5 \\ 1.5\end{bmatrix}
+x = \begin{bmatrix} 0.5 \\ 1.5\end{bmatrix},
+d = 2.5
 $$
 - Calculate the result $$A \times B$$ with the module `matmul`.
 - Calculate the result $$A \times x$$ with the module `matmul`.
-- Calculate the result of equation $$\frac{1}{2.0}$$ with the module `divider`.  
+- Calculate the result of equation $$\frac{1}{d}$$ with the module `divider`.  
 
 Please include the screenshots the simulation results, and verify if the results are correct. Remember that we are using **16-bit signed fixed-point** numbers for the calculation, with **10 bits** for the fractional part.  
 
