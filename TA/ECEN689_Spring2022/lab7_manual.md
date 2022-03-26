@@ -71,17 +71,17 @@ In this section, we will implement the design on the FPGA.
 - Take a screen shot of the terminal when the result shows.
 - Unmount the SD card, exit the serial communication and turn off your FPGA.
 
-Some commonly used commands:  
-```
-picocom -b 115200 -r -l /dev/ttyUSB1
-mount /dev/mmcblk0p1 /mnt/
-cd /mnt/
-insmod transfpga.ko
-mknod /dev/transfpga c 245 0
-./lab7_kalman_test [Clock cycles between each sampling]
-cd /
-umount /mnt/
-```
+- Some commonly used commands:  
+    ```
+    picocom -b 115200 -r -l /dev/ttyUSB1
+    mount /dev/mmcblk0p1 /mnt/
+    cd /mnt/
+    insmod transfpga.ko
+    mknod /dev/transfpga c 245 0
+    ./lab7_kalman_test [Clock cycles between each sampling]
+    cd /
+    umount /mnt/
+    ```
 
 ## 4. Question
 - Is Viterbi Decoder guaranteed to decode the original data correctly? Why?
