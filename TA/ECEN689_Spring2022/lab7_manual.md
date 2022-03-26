@@ -93,7 +93,7 @@ d = 2.5
 $$
 - Calculate the result $$A \times B$$ with the module `matmul`.
 - Calculate the result $$A \times x$$ with the module `matmul`.
-- Calculate the result of equation $$\frac{1}{d}$$ with the module `divider`.  
+- Calculate the result $$\frac{1}{d}$$ with the module `divider`.  
 
 Please include the screenshots the simulation results, and verify if the results are correct. Remember that we are using **16-bit signed fixed-point** numbers for the calculation, with **10 bits** for the fractional part.  
 
