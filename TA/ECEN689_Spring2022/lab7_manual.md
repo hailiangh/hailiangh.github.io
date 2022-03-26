@@ -110,8 +110,3 @@ Please include the screenshots the simulation results, and verify if the results
     - Screenshots of your code in this design
 - Please name the PDF file as "Lab#_Postlab_Section#_LastName_FirstName.pdf".  
 - Please submit the PDF file on Canvas before March 31 (Friday) 11:59 pm.  
-
-
-[anotherpage](./../../another-page.md)
-
-$$E=mc^2$$
