@@ -98,7 +98,7 @@ $$
 Please include the screenshots the simulation results, and verify if the results are correct. Remember that we are using **16-bit signed fixed-point** numbers for the calculation, with **10 bits** for the fractional part.  
 
 ## 5. Pre-lab Submission
-- Please only submit one PDF file, containing your work in Section 4.   
+- Please only submit one PDF file, containing your code and results in Section 4.   
 - Please name the PDF file as "Lab#_Prelab_Section#_LastName_FirstName.pdf".  
 - Please submit the PDF file on Canvas before March 28 (Monday) 11:59 pm.  
 
