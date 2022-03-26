@@ -13,8 +13,7 @@ $$
 x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}
 $$
 , where $$F$$, $$B$$ are the square matrices of size $$n$$. $$u_{k-1}$$ is the input control vector of size $$n$$. $$w_{k-1}$$ is the noise input vector. 
-The noise input follows the normal distribution with covariance $$Q$$.  
-$$w_{k-1}\sim N(0,Q)$$  
+The noise input follows the normal distribution with covariance $$Q$$. $$w_{k-1}\sim N(0,Q)$$  
 We want to estimate the state vector of the system ($$x$$), which is not known directly.   
 What we know are the input of the sytem ($$u$$) and the obervation of the state vector ($$z$$). The relationship of $$z$$ and $$x$$ can be illustrated as 
 $$  
