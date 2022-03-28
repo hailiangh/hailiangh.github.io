@@ -1,36 +1,24 @@
 ---
 layout: post
-title: Lab 7 - Kalman Filter on FPGAs
+title: Lab 8 - Systolic Arrays on FPGAs
 description: ECEN 489/689 - Spring 2022
 use_math: true
 use_code: true
 ---
-# Kalman Filter on FPGA
 ## 1. Introduction
-For this lab, we need to design the Kalman filter. Kalman filter estimates the state of a system based on the input and observation of the system.  
-Assume we have a linear system represented by 
-$$ 
-x_k = F x_{k-1} + Bu_{k-1} + w_{k-1}
-$$
-, where $$F$$, $$B$$ are the square matrices of size $$n$$. $$u_{k-1}$$ is the input control vector of size $$n$$. $$w_{k-1}$$ is the noise input vector. 
-The noise input follows the normal distribution with covariance $$Q$$. $$w_{k-1}\sim N(0,Q)$$  
-  
-We want to estimate the state vector of the system ($$x$$), which is not known directly. What we know are the input of the sytem ($$u$$) and the obervation of the state vector ($$z$$). The relationship of $$z$$ and $$x$$ can be illustrated as 
-$$  
-Z_k = H x_k + v_k
-$$
-, where $$H$$ is a $$n$$-dimensional square matrix, and $$v_k$$ is the observation noise vector. $$v_k$$ also follows the normal distribution with covariance $$R$$. $$v_k \sim N(0,R)$$  
+In this lab we need to design systolic arrays for matrix multiplication. Systolic arrays are data processing units arranged in mesh-like topologies. The data processing units or nodes perform sequence of operations on the data that flows through them. The simplest design of a systolic array in a 3D representation is shown in the figure below. This systolic array can calculate the multiplication of two $$2x2$$ matrices $$a$$ and $$b$$, and the result is matrix c, such that $$c=a \times b$$.  
+![fig1](./pics/lab8_manual_SystolicArray_3D.png)  
 
-Now we have an estimation system, where we have two known inputs $$u_k$$ and $$z_k$$. And the estimated $$x_k$$ is the output. The estimation process is shown in the figure below.  
-![fig1](./pics/lab7_manual_KalmanFilter_EstimateX.png)
+The systolic array can be modified to a 2D structure as well, and this is shown in the figure below.
+![fig1](./pics/lab8_manual_SystolicArray_2D.png)  
+To compute $$c=a \times b$$, the numbers in matrice $$a$$ and $$b$$ need to be input in the two ports for $$a$$ and two ports for $$b$$ in the correct order and with correct delay. 
 
-For this lab, we use vehicle position as an example. Assume the state $$x=\begin{bmatrix}p\\ v\end{bmatrix}$$, where $$p$$ is the position of the vehicle and $$v$$ is the velocity. Both $$p$$ and $$v$$ are scalars. Also, assume $$u$$ is the acceleration. Then, $$F=\begin{bmatrix} 1 & ∆t \\ 0 & 1 \end{bmatrix}$$, $$B=\begin{bmatrix} 0.5{\Delta t}^2 \\ 1\end{bmatrix} $$. Assume the measurement $$z$$ is $$x$$ itself with noise, then $$H=\begin{bmatrix} 1 & 0 \\ 0 & 1\end{bmatrix} $$.  
-In this lab, we assume both $$Q$$ and $$R$$ are $$\begin{bmatrix} 0.2 & 0 \\ 0 & 0.2\end{bmatrix} $$, and the initial state $$x_0 = \begin{bmatrix} 0 \\ 0\end{bmatrix} $$, and $$P_0=\begin{bmatrix} 0 & 0 \\ 0 & 0\end{bmatrix} $$.
+## 2. Lab Design on Systolic Arrays
+In this section, we need to implement the systolic array module in Vivado. Before you proceed, please download **"Lab8_student_code.zip"** from Piazza and extract it. After extraction, you will get a folder named as **"Lab8_student_code/"**. Copy the folder **"base_vivado"** and rename it as **"lab8_vivado"**. From the source panel, remove unnecessary source files. Open the project by double-click on **"lab8_vivado/base/base.xpr"**.
 
-## 2. Lab Design on Viterbi Decoder
-In this section, we need to implement the Kalman filter module in Vivado. Before you proceed, please download **"Lab7_student_code.zip"** from Piazza and extract it. After extraction, you will get a folder named as **"Lab7_student_code/"**. Copy the folder **"base_vivado"** and rename it as **"lab7_vivado"**. From the source panel, remove unnecessary source files. Open the project by double-click on **"lab7_vivado/base/base.xpr"**.
+In this lab, you need to use **8-bit signed fixed-point** number for calculation, with **4 bits** for the fractional part.  
 
-In this lab, you need to use **16-bit signed fixed-point** number for calculation, with **10 bits** for the fractional part.  
+In this lab, all the matrices in the sequential form are arranged column by column, and then row by row. For example, if a matrix $$m$$ has 3 rows and 2 columns, we will have an array to save this matrix as $$\[m_{32}\]$$ then the data at row 2, column 1 is at bits 23 to 16. So `m[23:16]` represents the data at position m21, where mij refers to data at row i and column j of the matrix ‘m’. In the same manner, m[7:0] is at m11 and m[15:8] is at m12.
 
 - In **"kalman.v"**, `n` is an input indicate this is the `nth` input. $$u$$ and $$z$$ are the acceleration and the measurement respectively. The metrics `n`, $$u$$, $$z$$ will be updated on each positive edge of `clk`, i.e., for each positive edge of the clock, there is a set of new input. You are not required to use all the inputs, but the input would be continuously sent. `x0`, `P0` are the initial states. The output `n_0` indicates the output calculated from `n_0th` input. The estimated state is `x0` and `outen` indicates if there is output in this corresponding clock cycle. 
 
