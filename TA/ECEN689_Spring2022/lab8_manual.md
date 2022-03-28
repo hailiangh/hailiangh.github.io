@@ -18,7 +18,7 @@ In this section, we need to implement the systolic array module in Vivado. Befor
 
 In this lab, you need to use **8-bit signed fixed-point** number for calculation, with **4 bits** for the fractional part.  
 
-In this lab, all the matrices in the sequential form are arranged column by column, and then row by row. For example, if a matrix $$m$$ has 3 rows and 2 columns, we will have an array to save this matrix as $$\[m_{32}\]$$ then the data at row 2, column 1 is at bits 23 to 16. So `m[23:16]` represents the data at position m21, where mij refers to data at row i and column j of the matrix ‘m’. In the same manner, m[7:0] is at m11 and m[15:8] is at m12.
+In this lab, all the matrices in the sequential form are arranged column by column, and then row by row. For example, if a matrix $$m$$ has 3 rows and 2 columns, we will have an array to save this matrix as $$\[m_{32}\]$$ ,where $$m_{ij}$$ refers to data at row $$i$$ and column $$j$$ of the matrix $$m$$.  
 
 - In **"kalman.v"**, `n` is an input indicate this is the `nth` input. $$u$$ and $$z$$ are the acceleration and the measurement respectively. The metrics `n`, $$u$$, $$z$$ will be updated on each positive edge of `clk`, i.e., for each positive edge of the clock, there is a set of new input. You are not required to use all the inputs, but the input would be continuously sent. `x0`, `P0` are the initial states. The output `n_0` indicates the output calculated from `n_0th` input. The estimated state is `x0` and `outen` indicates if there is output in this corresponding clock cycle. 
 
