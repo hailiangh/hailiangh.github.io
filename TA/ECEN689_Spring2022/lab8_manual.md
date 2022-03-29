@@ -9,7 +9,7 @@ use_code: true
 In this lab we need to design systolic arrays for matrix multiplication. Systolic arrays are data processing units arranged in mesh-like topologies. The data processing units or nodes perform sequence of operations on the data that flows through them. The simplest design of a systolic array in a 3D representation is shown in the figure below. This systolic array can calculate the multiplication of two $$2x2$$ matrices $$a$$ and $$b$$, and the result is matrix c, such that $$c=a \times b$$.  
 ![fig1](./pics/lab8_manual_SystolicArray_3D.png)  
 
-The systolic array can be modified to a 2D structure as well, and this is shown in the figure below.
+The systolic array can be modified to a 2D structure as well, and this is shown in the figure below.  
 ![fig1](./pics/lab8_manual_SystolicArray_2D.png)  
 To compute $$c=a \times b$$, the numbers in matrice $$a$$ and $$b$$ need to be input in the two ports for $$a$$ and two ports for $$b$$ in the correct order and with correct delay. 
 
@@ -18,9 +18,9 @@ In this section, we need to implement the systolic array module in Vivado. Befor
 
 In this lab, you need to use **8-bit signed fixed-point** number for calculation, with **4 bits** for the fractional part.  
 
-In this lab, all the matrices in the sequential form are arranged column by column, and then row by row. For example, if a matrix $$m$$ has 3 rows and 2 columns, we will have an array to save this matrix as $$\[m_{32}\]$$ ,where $$m_{ij}$$ refers to data at row $$i$$ and column $$j$$ of the matrix $$m$$.  
+In this lab, all the matrices in the sequential form are arranged column by column, and then row by row. For example, if a matrix $$m$$ has 3 rows and 2 columns, we will have an array to save this matrix as $$\lbrack m_{32} \rbrack \lbrack m_{31} \rbrack \lbrack m_{22} \rbrack \lbrack m_{21} \rbrack \lbrack m_{12} \rbrack \lbrack m_{11} \rbrack$$ ,where $$m_{ij}$$ refers to data at row $$i$$ and column $$j$$ of the matrix $$m$$.  
 
-- In **"systolicarray_1.v"**, $$mi0$$, $$mi1$$ are two inputs representing the two matrices. The output matrix is $$mor$$, resulting from the operation $$mi0 \times mi1$$. You are required to design the combinational logic between $$mi0$$, $$mi1$$ and $$mo$$, where $$mo$$ is the output result from operation $$mi0 \times mi1$$ of the combinational logic.  
+- In **"systolicarray_1.v"**,$$mi0$$, $$mi1$$ are two inputs representing the two matrices. The output matrix is $$mor$$, resulting from the operation $$mi0 \times mi1$$. You are required to design the combinational logic between $$mi0$$, $$mi1$$ and $$mo$$, where $$mo$$ is the output result from operation $$mi0 \times mi1$$ of the combinational logic.  
 - Please write a testbench **"systolic_array_tb.v"** to calculate the  
   $$
   \begin{bmatrix} 0.5 & 1 \\ 1 & 0.5\end{bmatrix} \times \begin{bmatrix} 1 & 2 \\ 3 & 4\end{bmatrix}
@@ -37,10 +37,10 @@ In this section, we will implement the design on the FPGA.
   
     | Block RAM Name | Memory Type |    Port A Settings | Port B Settings|
     | ------------- | ------------- | ------------- | ------------- |
-    | blk_mem_gen_0  | True Dual Port  | Width: 8, Depth: 65536, Read First, Always Enabled  | Same as Port A  |  
+    | blk_mem_gen_0  | True Dual Port  | Width: 8 Depth: 65536 Read First Always Enabled  | Same as Port A  |  
 
 - Click on **"Generate Bitstream"** to invoke the design flow and generate the bitstream. After the bitstream is generated, click **"File -> Export -> Export Hardware"**. Check the box **"Include Bitstream"**, click **"OK"**.
-- Please launch SDK and generate the boot image (**BOOT.bin**) as in the previous lab with one exception:
+- Please launch SDK and generate the boot image (**BOOT.bin**) as in the previous lab with one exception:  
     Use the bitstream file **base/base.sdk/top_viterbi_hw_platform_0/top_systolicarray.bit**.
 - Copy the updated **BOOT.bin** and **lab8_sysarr_test** into your SD card, boot the FPGA and run the test with command:
     ```  
