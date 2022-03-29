@@ -16,9 +16,9 @@ To compute $$c=a \times b$$, the numbers in matrice $$a$$ and $$b$$ need to be i
 ## 2. Lab Design on Systolic Arrays
 In this section, we need to implement the systolic array module in Vivado. Before you proceed, please download **"Lab8_student_code.zip"** from Piazza and extract it. After extraction, you will get a folder named as **"Lab8_student_code/"**. Copy the folder **"base_vivado"** and rename it as **"lab8_vivado"**. From the source panel, remove unnecessary source files. Open the project by double-click on **"lab8_vivado/base/base.xpr"**.
 
-In this lab, you need to use **8-bit signed fixed-point** number for calculation, with **4 bits** for the fractional part.  
+In this lab, we will implement the 3-D systolic array design in **"systolicarray_1.v"**, and the 2-D systolic array design in **"systolicarray_2.v"**. Please use **8-bit signed fixed-point** number for calculation, with **4 bits** for the fractional part.  
 
-In this lab, all the matrices in the sequential form are arranged column by column, and then row by row. For example, if a matrix $$m$$ has 3 rows and 2 columns, we will have an array to save this matrix as $$\lbrack m_{32} \rbrack \lbrack m_{31} \rbrack \lbrack m_{22} \rbrack \lbrack m_{21} \rbrack \lbrack m_{12} \rbrack \lbrack m_{11} \rbrack$$ ,where $$m_{ij}$$ refers to data at row $$i$$ and column $$j$$ of the matrix $$m$$.  
+In this lab, all the matrices in the sequential form are arranged column by column, and then row by row. For example, if a matrix $$m$$ has 3 rows and 2 columns, we will have an array to save this matrix as $$\lbrack m_{32}, m_{31}, m_{22}, m_{21}, m_{12}, m_{11} \rbrack$$ ,where $$m_{ij}$$ refers to data at row $$i$$ and column $$j$$ of the matrix $$m$$.  
 
 - In **"systolicarray_1.v"**,$$mi0$$, $$mi1$$ are two inputs representing the two matrices. The output matrix is $$mor$$, resulting from the operation $$mi0 \times mi1$$. You are required to design the combinational logic between $$mi0$$, $$mi1$$ and $$mo$$, where $$mo$$ is the output result from operation $$mi0 \times mi1$$ of the combinational logic.  
 - Please write a testbench **"systolic_array_tb.v"** to calculate the  
@@ -61,31 +61,17 @@ In this section, we will implement the design on the FPGA.
     umount /mnt/
     ```
 
-## 4. Matrix Operations - Pre-lab Assignment
-In this lab, most of the operations involved are matrix multiplication and inversion. In the code provided, we have modules `matmul` for $$2\times2$$ matrix multiplication and `divider` for calculating the reciprocal of a fixed-point number. As a warm-up, you are asked to write a testbench to test the functionality of the module `matmul` and `divider`. Please refering to the test benches in the previous labs, write a test bench that satisfies the following functionalities:  
-Suppose we have 
-$$
-A = \begin{bmatrix} 1 & 2 \\ 3 & 4\end{bmatrix},
-B = \begin{bmatrix} 0.5 & 0 \\ 0 & 1.5\end{bmatrix},
-x = \begin{bmatrix} 0.5 \\ 1.5\end{bmatrix},
-d = 0.25
-$$
-- Calculate the result $$A \times B$$ with the module `matmul`.
-- Calculate the result $$A \times x$$ with the module `matmul`.
-- Calculate the result $$\frac{1}{d}$$ with the module `divider`.  
-
-Please include the screenshots the simulation results, and verify if the results are correct. Remember that we are using **16-bit signed fixed-point** numbers for the calculation, with **10 bits** for the fractional part.  
-
-## 5. Pre-lab Submission
-- Please only submit one PDF file, containing your code and results in Section 4.   
+## 4. Pre-lab Submission
+- Please only submit one PDF file, containing your code and simulations for the 3-D systolic array design.   
 - Please name the PDF file as "Lab#_Prelab_Section#_LastName_FirstName.pdf".  
-- Please submit the PDF file on Canvas before March 28 (Monday) 11:59 pm.  
+- Please submit the PDF file on Canvas before April 4 (Monday) 11:59 pm.  
 
 
-## 6. Post-lab Submission
+## 5. Post-lab Submission
 - Please only submit one PDF file, containing the following items:  
-    - Screenshots of the terminal after running the command `./lab7_kalman_test [Clock cycles between each sampling]`  
+    - Screenshots of the behavioral simulation of the 2-D systolic array design  
+    - Screenshots of the terminal after running the command `./lab8_sysarr_test  
     - A few words explaining the results
     - Screenshots of your code in this design
 - Please name the PDF file as "Lab#_Postlab_Section#_LastName_FirstName.pdf".  
-- Please submit the PDF file on Canvas before April 1 (Friday) 11:59 pm.  
+- Please submit the PDF file on Canvas before April 8 (Friday) 11:59 pm.  
