@@ -12,4 +12,7 @@
 [Lab7 Manual](ECEN689_Spring2022/lab7_manual.md)
 
 ## Lab 8: Systolic Arrays on FPGAs
-[Lab7 Manual](ECEN689_Spring2022/lab7_manual.md)
+[Lab8 Manual](ECEN689_Spring2022/lab8_manual.md)
+
+## Lab 9: CNN on FPGAs
+[Lab9 Manual](ECEN689_Spring2022/lab9_manual.md)
