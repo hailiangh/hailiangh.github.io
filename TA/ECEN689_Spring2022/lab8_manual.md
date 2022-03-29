@@ -6,7 +6,7 @@ use_math: true
 use_code: true
 ---
 ## 1. Introduction
-In this lab we need to design systolic arrays for matrix multiplication. Systolic arrays are data processing units arranged in mesh-like topologies. The data processing units or nodes perform sequence of operations on the data that flows through them. The simplest design of a systolic array in a 3D representation is shown in the figure below. This systolic array can calculate the multiplication of two $$2x2$$ matrices $$a$$ and $$b$$, and the result is matrix c, such that $$c=a \times b$$.  
+In this lab we need to design systolic arrays for matrix multiplication. Systolic arrays are data processing units arranged in mesh-like topologies. The data processing units or nodes perform sequence of operations on the data that flows through them. The simplest design of a systolic array in a 3D representation is shown in the figure below. This systolic array can calculate the multiplication of two $$2 \times 2$$ matrices $$a$$ and $$b$$, and the result is matrix $$c$$, such that $$c=a \times b$$.  
 ![fig1](./pics/lab8_manual_SystolicArray_3D.png)  
 
 The systolic array can be modified to a 2D structure as well, and this is shown in the figure below.  
