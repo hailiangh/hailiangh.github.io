@@ -20,39 +20,32 @@ In this lab, you need to use **8-bit signed fixed-point** number for calculation
 
 In this lab, all the matrices in the sequential form are arranged column by column, and then row by row. For example, if a matrix $$m$$ has 3 rows and 2 columns, we will have an array to save this matrix as $$\[m_{32}\]$$ ,where $$m_{ij}$$ refers to data at row $$i$$ and column $$j$$ of the matrix $$m$$.  
 
-- In **"kalman.v"**, `n` is an input indicate this is the `nth` input. $$u$$ and $$z$$ are the acceleration and the measurement respectively. The metrics `n`, $$u$$, $$z$$ will be updated on each positive edge of `clk`, i.e., for each positive edge of the clock, there is a set of new input. You are not required to use all the inputs, but the input would be continuously sent. `x0`, `P0` are the initial states. The output `n_0` indicates the output calculated from `n_0th` input. The estimated state is `x0` and `outen` indicates if there is output in this corresponding clock cycle. 
+- In **"systolicarray_1.v"**, $$mi0$$, $$mi1$$ are two inputs representing the two matrices. The output matrix is $$mor$$, resulting from the operation $$mi0 \times mi1$$. You are required to design the combinational logic between $$mi0$$, $$mi1$$ and $$mo$$, where $$mo$$ is the output result from operation $$mi0 \times mi1$$ of the combinational logic.  
+- Please write a testbench **"systolic_array_tb.v"** to calculate the  
+  $$
+  \begin{bmatrix} 0.5 & 1 \\ 1 & 0.5\end{bmatrix} \times \begin{bmatrix} 1 & 2 \\ 3 & 4\end{bmatrix}
+  $$  
+  Run the behavioral simulation and take a screenshot of the result. Please include it in the pre-lab submission with explanation on the result.
 
-- Your system may have latency and/or delay. For example. If your system has a latency of 10 clock cycles and a delay of 4 clock cycles, your system may use the input at clock cycles 0, 10, 20 …, and output the results at the respective clock cycles of  14, 24, 34… and so on. However, output n_0 needs to indicate which input is used for calculating this output. Therefore, in the above example, at the clock cycles 14, 24, 34, n_0 should be 0, 10, 20…
-
-- There will be totally 1000 input data elements, which will be input within 1000 clock cycles. You are required to have at least 5 (10 for GRADUATE students) outputs within 1000 clock cycles. Therefore, your design should not have large latency and delay. For example, if the latency of your design is 400, which means your design needs 400 clock cycles to filter one input, then you can only generate 2 filtered data output, and this is not sufficient. 
-
-- You are required to implement the design such that:
-  - When `rst` is `0`, all the data elements are reset to `0` and `outen` is set to `0`.
-  - When `rst` is `1`, the module starts sampling and calculating.
-  - Whenever there is an output on `n_0` and `x_0`, `outen` is set to `1`. Otherwise, `outen` is set to `0`. For each output, `outen` is only set to `1` for `1` clock cycle. 
+- For the 2-D design of the systolic array, please implement it in **"systolicarray_2.v"**. Please pay attention to stream in the entries of the two input matrices in the correct order. After the design, please use the same test bench file to do the same matrix calculation, and include the screenshot in your post-lab submission.  
 
 ## 3. Implementation on the FPGA
 In this section, we will implement the design on the FPGA.  
-- Right click **"top_kalman.v"** in the **"source"** panel and click **"set as top"** (If this file is shown in bold font, it is already the top module).   
+- Right click **"top_sysarr.v"** in the **"source"** panel and click **"set as top"** (If this file is shown in bold font, it is already the top module).   
 
 - The block RAM settings for this lab is shown in the table below.
   
     | Block RAM Name | Memory Type |    Port A Settings | Port B Settings|
     | ------------- | ------------- | ------------- | ------------- |
-    | blk_mem_gen_0  | True Dual Port  | Width: 8, Depth: 20000, Read First, Always Enabled  | Same as Port A  |
-    | blk_mem_gen_1  | Single Port RAM  | Width: 96, Depth: 1000, Read First, Always Enabled  | N/A  |
-    | blk_mem_gen_2  | Single Port RAM  | Width: 32, Depth: 1000, Read First, Always Enabled  | N/A  |
+    | blk_mem_gen_0  | True Dual Port  | Width: 8, Depth: 65536, Read First, Always Enabled  | Same as Port A  |  
 
 - Click on **"Generate Bitstream"** to invoke the design flow and generate the bitstream. After the bitstream is generated, click **"File -> Export -> Export Hardware"**. Check the box **"Include Bitstream"**, click **"OK"**.
 - Please launch SDK and generate the boot image (**BOOT.bin**) as in the previous lab with one exception:
-    Use the bitstream file **base/base.sdk/top_viterbi_hw_platform_0/top_viterbi.bit**.
-- Copy the updated **BOOT.bin**, **lab7_data** and **lab7_kalman_test** into your SD card, boot the FPGA and run the test with command:
+    Use the bitstream file **base/base.sdk/top_viterbi_hw_platform_0/top_systolicarray.bit**.
+- Copy the updated **BOOT.bin** and **lab8_sysarr_test** into your SD card, boot the FPGA and run the test with command:
     ```  
-    ./lab7_kalman_test [Clock cycles between each sampling]
-    // For example:
-    ./lab7_kalman_test 10
+    ./lab8_sysarr_test  
     ```  
-- You may need to adjust your sampling rate for a better results.
 - Take a screen shot of the terminal when the result shows.
 - Unmount the SD card, exit the serial communication and turn off your FPGA.
 
@@ -63,7 +56,7 @@ In this section, we will implement the design on the FPGA.
     cd /mnt/
     insmod transfpga.ko
     mknod /dev/transfpga c 245 0
-    ./lab7_kalman_test [Clock cycles between each sampling]
+    ./lab8_sysarr_test 
     cd /
     umount /mnt/
     ```
