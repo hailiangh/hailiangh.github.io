@@ -74,7 +74,7 @@ All the IO buffers are already implemented and does not needed to be modified by
 
 ### 2.3 Controller Design  
 Another important part of the systolic array is the controller. The controller can arrange the inputs in the correct order and input them into the array. The controller can also control the array and read back the calculated results. It is written in **“matrix_cal.v”**.  
-The state transition of the controller is shown in the figure below.
+The state transition of the controller is shown in the figure below.  
 ![fig7](./pics/lab8_manual_SystolicArray_2D.png)  
 
 The controller is already implemented. Students don't need to modify it. The logic of this design is described below:  
