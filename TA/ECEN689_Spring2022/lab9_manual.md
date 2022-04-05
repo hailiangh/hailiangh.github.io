@@ -39,30 +39,26 @@ For each PE, it can do multiplication and accumulate the data. So we need to inp
 Now we need to map the convolution to the systolic array. It is important to choose which PE would calculate which `OUT[o][r/sr][c/sc]`. In the proposed systolic array, each PE will transmit its two inputs (`W` and `IN`) to the next two PEs near it, so `W` and `IN` should also be available for use by the near PE.  
 In this lab, we map the calculation as described below:  
 We map **“o”** along the row, and **“c”** along the column. This means, the PE at row 1 column 2 (starting from row 0 and column 0) needs to calculate `OUT[1][r][2]`.  
-i,kr and kc are regarded as “vectors”, which means that for each PE, W and IN with different i,kr and kc are sequentially inputted. For the sequential inputs, i changes first, then kr, and then kc.
-If the size of the systolic array is smaller than do*dc, then o and c should be partially mapped to the systolic array. For example, assume sr=sc=1, if do=20, dc=10, and the systolic array is 4*5, then for the first time, o=0 to 3 are mapped to row and c=0 to 4 are mapped to column. After the computing is complete, o=0 to 3 and c=5 to 9 are mapped to row and column. Then, o=4 to 7 and c=0 to 4 are mapped, and so on.
-After all the o and c are mapped to the systolic array and computing is finished, r is increased by 1, and all the above steps are repeated until all the OUTorsrcsc are calculated.
+`i`,`kr` and `kc` are regarded as “vectors”, which means that for each PE, `W` and `IN` with different `i`, `kr` and `kc` are sequentially inputted. For the sequential inputs, `i` changes first, then `kr`, and then `kc`.  
+If the size of the systolic array is smaller than `do*dc`, then `o` and `c` should be partially mapped to the systolic array. For example, assume `sr = sc = 1`, if `do = 20`, `dc = 10`, and the systolic array is `4 x 5`, then for the first time, `o = 0 to 3` are mapped to row and `c = 0 to 4` are mapped to column. After the computing is complete, `o = 0 to 3` and `c = 5 to 9` are mapped to row and column. Then, `o = 4 to 7` and `c = 0 to 4` are mapped, and so on.  
+After all the `o` and `c` are mapped to the systolic array and the calculation is finished, `r` is increased by 1, and all the above steps are repeated until all the `OUT[o][r/sr][c/sc]` are calculated.  
 
-The scheduling of systolic array of 3 rows and 4 columns are illustrated in Figure 4, where sr=sc=1.
+The scheduling of a systolic array of 3 rows and 4 columns are illustrated in the figure below, where `sr = sc = 1`.  
+![fig4](./pics/lab8_manual_SystolicArray_2D.png)  
+Note that with rows and columns increasing, the sequence of vectors are inputted with delays to synchonize the input of `W` and `IN` to one PE.  
+In this way, `W` and `IN` inputted to one PE can also be transmitted and used by PEs near it. For example, after `W[1][0][0][0]` and `IN[0][0][2]` arrives at PE at row 1 and column 2 at the same clock cycle. `W[1][0][0][0]` can also be transmitted to the PE at row 1 and column 3 at the next clock cycle, together with `IN[0][0][3]` which is needed to calculate `OUT[1][0][3]`.  
+
+### 1.4 Proposed CNN
+The figure below shows the structure of the CNN we use. We will use it to do the inference on [MNIST](https://en.wikipedia.org/wiki/MNIST_database) dataset.  
+![fig5](./pics/lab8_manual_SystolicArray_2D.png)  
+
+For simplicity, we ignore the pooling layer. The activation function of each layer is **ReLU**, except the last layer. The strides `sr` and `sc` of the two convolution layers are both 2.  
+
+Although the last two layers are fully connected layers, it can also be regarded as convolution layer for calculation purpose. If the input neurons are `m`, and output neurons are `n`, then, by setting `dkr = dkc = dr = dc = 1`, and `di = m`, `do = n`, we can reuse our convolution layer’s systolic array structure or scheduling approach to calculate fully connected layers, as shown in the figure below.  
+![fig6](./pics/lab8_manual_SystolicArray_2D.png)  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-The systolic array can be modified to a 2D structure as well, and this is shown in the figure below.  
-
-To compute $$c=a \times b$$, the numbers in matrice $$a$$ and $$b$$ need to be input in the two ports for $$a$$ and two ports for $$b$$ in the correct order and with correct delay. 
-
-## 2. Lab Design on Systolic Arrays
+## 2. Lab Designs
 In this section, we need to implement the systolic array module in Vivado. Before you proceed, please download **"Lab8_student_code.zip"** from Piazza and extract it. After extraction, you will get a folder named as **"Lab8_student_code/"**. Copy the folder **"base_vivado"** and rename it as **"lab8_vivado"**. From the source panel, remove unnecessary source files. Open the project by double-click on **"lab8_vivado/base/base.xpr"**.
 
 In this lab, we will implement the 3-D systolic array design in **"systolicarray_1.v"**, and the 2-D systolic array design in **"systolicarray_2.v"**. Please use **8-bit signed fixed-point** number for calculation, with **4 bits** for the fractional part.  
