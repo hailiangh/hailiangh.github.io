@@ -1,16 +1,39 @@
 ---
 layout: post
-title: Lab 8 - Systolic Array Based CNN Design on FPGAs
+title: Lab 9 - Systolic Array Based CNN Design on FPGAs
 description: ECEN 489/689 - Spring 2022
 use_math: true
 use_code: true
 ---
 ## 1. Introduction
-In this lab we need to design systolic arrays for matrix multiplication. Systolic arrays are data processing units arranged in mesh-like topologies. The data processing units or nodes perform sequence of operations on the data that flows through them. The simplest design of a systolic array in a 3D representation is shown in the figure below. This systolic array can calculate the multiplication of two $$2 \times 2$$ matrices $$a$$ and $$b$$, and the result is matrix $$c$$, such that $$c=a \times b$$.  
+In this lab we need to design systolic arrays for convolutional neural networks (CNN).  
+
+### 1.1 Structure of systolic arrays
+The structure discussed here is similar to the one described by authors *Xuechao Wei, Cody Hao Yu, Peng Zhang, Youxiang Chen, Yuxin Wang, Han Hu, Yun Liang, and J. Cong* in the paper, **“Automated Systolic Array Architecture Synthesis for High Throughput CNN Inference on FPGAs”** published in 2017 at the  *54th ACM/EDAC/IEEE Design Automation Conference (DAC), pp. 1–6*.  
 ![fig1](./pics/lab8_manual_SystolicArray_3D.png)  
+In the , the terms **WB**,**IB**,**OB** refer to the weight buffers, input buffers and output buffers. PE (Processing Element) is the basic unit similar to Lab8. Its structure in this lab is shown in the figure below.  
+![fig2](./pics/lab8_manual_SystolicArray_2D.png)  
+
+### 1.2 Convolution calculation
+For each layer of the CNN, we need to do the convolution. The pseudo-code is as follows:
+```
+for (o = 0; o < do; o++) {
+  for (i = 0; i < di; i++) {
+    for (c = 0; c <= dc - dkc - sc; c += sc) {
+      for (r = 0; r <= dr - dkr - sr; r += sr) {
+        for (kr = 0; kr < dkr; kr++) {
+          for (kc = 0; kc < dkc; kc++) {
+            OUT[o][r/sr][c/sc] += W[o][i][kr][kc] * IN[i][r+kr][c+kc]
+          }
+        }
+      }
+    }
+  }
+}
+```
 
 The systolic array can be modified to a 2D structure as well, and this is shown in the figure below.  
-![fig1](./pics/lab8_manual_SystolicArray_2D.png)  
+
 To compute $$c=a \times b$$, the numbers in matrice $$a$$ and $$b$$ need to be input in the two ports for $$a$$ and two ports for $$b$$ in the correct order and with correct delay. 
 
 ## 2. Lab Design on Systolic Arrays
