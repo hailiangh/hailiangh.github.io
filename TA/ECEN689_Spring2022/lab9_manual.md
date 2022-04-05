@@ -59,20 +59,28 @@ Although the last two layers are fully connected layers, it can also be regarded
 
 
 ## 2. Lab Designs
-In this section, we need to implement the systolic array module in Vivado. Before you proceed, please download **"Lab8_student_code.zip"** from Piazza and extract it. After extraction, you will get a folder named as **"Lab8_student_code/"**. Copy the folder **"base_vivado"** and rename it as **"lab8_vivado"**. From the source panel, remove unnecessary source files. Open the project by double-click on **"lab8_vivado/base/base.xpr"**.
+In this section, we need to implement the **PE**, **PE Array**, and **Systilic Array** modules in Vivado. Please use **16-bit signed fixed-point** number for calculation, with **8 bits** for the fractional part.  
+Before you proceed, please download **"Lab9_student_code.zip"** from Piazza and extract it. Copy the folder **"base_vivado"** and rename it as **"lab9_vivado"**. From the source panel, remove unnecessary source files. Open the project by double-click on **"lab9_vivado/base/base.xpr"**.  
 
-In this lab, we will implement the 3-D systolic array design in **"systolicarray_1.v"**, and the 2-D systolic array design in **"systolicarray_2.v"**. Please use **8-bit signed fixed-point** number for calculation, with **4 bits** for the fractional part.  
+### 2.1 PE Design
+The first step is to design PE illustrated in the 2nd figure in Section 1. Please implement the design in **“PE.v”**. `i_in`, `i_w`, `i_out`  are the input data (image), weight and another PE’s output. `o_in`, `o_w`, `o_out` are the output data (image), weight and the current PE’s output. When input `ctl` is 1, the PE needs to output its calculated convolution data to the `o_out` port, otherwise, `o_out` needs to transmit the `i_out` input.  
 
-In this lab, all the matrices in the sequential form are arranged column by column, and then row by row. For example, if a matrix $$m$$ has 3 rows and 2 columns, we will have an array to save this matrix as $$\lbrack m_{32}, m_{31}, m_{22}, m_{21}, m_{12}, m_{11} \rbrack$$ ,where $$m_{ij}$$ refers to data at row $$i$$ and column $$j$$ of the matrix $$m$$.  
+### 2.2 Connecting PEs
+Next you will need to design the PE array by connecting the PEs with wires. This part of the design will be implemented in **"array.v"**. The number of rows and columns of the PEs are specified by parameter `rows` and `cols`. Therefore, the number of PEs is not fixed and you need to use `generate` in Verilog to automatically generate the PE array. Besides, parameters `width` and `decimal` need to be passed to each instance of the PE.  
 
-- In **"systolicarray_1.v"**,$$mi0$$, $$mi1$$ are two inputs representing the two matrices. The output matrix is $$mor$$, resulting from the operation $$mi0 \times mi1$$. You are required to design the combinational logic between $$mi0$$, $$mi1$$ and $$mo$$, where $$mo$$ is the output result from operation $$mi0 \times mi1$$ of the combinational logic.  
-- Please write a testbench **"systolic_array_tb.v"** to calculate the  
-  $$
-  \begin{bmatrix} 0.5 & 1 \\ 1 & 0.5\end{bmatrix} \times \begin{bmatrix} 1 & 2 \\ 3 & 4\end{bmatrix}
-  $$  
-  Run the behavioral simulation and take a screenshot of the result. Please include it in the pre-lab submission with explanation on the result.
+Input `ctls` needs to be connected to all the `ctl` ports of the PEs, from column `0` to column `cols-1`, and from row `0` to `rows-1`. For example, `ctls[cols*2+3]` should be connected to the PE at `row 2` and `column 3`.  
+Input `ins` needs to be connected to all the input `i_in` ports of PEs. The lowest bits `width-1` to `0` of `ins` should be connected to the leftmost PE of the first row. Input `ws` needs to be connected to all the input `i_w` ports of PEs. The lowest bits `width-1` to `0` of `ws` should be connected to the upmost PE of the first column. Output `outs` needs to be connected to all the output `o_out` ports of PEs. The lowest bits `width-1` to `0` of `ws` should be connected to the leftmost PE of the first row.  
+All the IO buffers are already implemented and does not needed to be modified by students. The systolic array including the IO buffers is in “systolic_array.v”. You don’t need to modify it. The input buffer `WB` and `IB` (both of them are instances of module `IB`) can only store vectors with size `vector`, while the output buffer `OB` can store the same number of outputs as the number of rows.  
 
-- For the 2-D design of the systolic array, please implement it in **"systolicarray_2.v"**. Please pay attention to stream in the entries of the two input matrices in the correct order. After the design, please use the same test bench file to do the same matrix calculation, and include the screenshot in your post-lab submission.  
+### 2.3 Controller Design  
+Another important part of the systolic array is the controller. The controller can arrange the inputs in the correct order and input them into the array. The controller can also control the array and read back the calculated results. It is written in **“matrix_cal.v”**.  
+The state transition of the controller is shown in the figure below.
+![fig7](./pics/lab8_manual_SystolicArray_2D.png)  
+
+The controller is already implemented. Students don't need to modify it. The logic of this design is described below:  
+When loading weights and loading image, specify the memory address given the `o,i,r,c,kr,kc`. The weights are stored in the memory with the increasing of `kc`, then `kr`, then `i`, and then `o`. The image is stored in the memory with the increasing of `c`, then `r`, and then `i`.  
+The current values of these variables are represented by `io,ii,ir,ic,ikr,ikc`. You are required to use the values of `io,ii,ir,ic,ikr,ikc,do,di,dr,dc, dkr,dkc` (`waddr` and `inaddr` is the starting address of the weights and image). The places where the memory addresses are needed to be specified is right after the `LOADW` and `LOADIN` state, after the comments.  
+Control the input buffer of image and weights to output their data in the correct order. You can control them by setting their control port to 3. The control port of the input buffer from the first row to the last row is `ctlbwr[0]` to `ctlbwr[rows-1]`, and from the first column to the last column is `ctlinr[0]` to `ctlinr[cols-1]`. Once any of them is set to 3, the buffer will start to input the weights/image data to systolic array, one in each clock cycle. This part is at the beginning of the `CAL` state. You need to use the variable `count`, which indicates the current clock cycle within this state (starting from 0).  
 
 ## 3. Implementation on the FPGA
 In this section, we will implement the design on the FPGA.  
@@ -87,9 +95,9 @@ In this section, we will implement the design on the FPGA.
 - Click on **"Generate Bitstream"** to invoke the design flow and generate the bitstream. After the bitstream is generated, click **"File -> Export -> Export Hardware"**. Check the box **"Include Bitstream"**, click **"OK"**.
 - Please launch SDK and generate the boot image (**BOOT.bin**) as in the previous lab with one exception:  
     Use the bitstream file **base/base.sdk/top_viterbi_hw_platform_0/top_systolicarray.bit**.
-- Copy the updated **BOOT.bin** and **lab8_sysarr_test** into your SD card, boot the FPGA and run the test with command:
+- Copy the updated **BOOT.bin** and **lab9_cnn_test** into your SD card, boot the FPGA and run the test with command:
     ```  
-    ./lab8_sysarr_test  
+    ./lab9_cnn_test  
     ```  
 - Take a screen shot of the terminal when the result shows.
 - Unmount the SD card, exit the serial communication and turn off your FPGA.
@@ -101,7 +109,7 @@ In this section, we will implement the design on the FPGA.
     cd /mnt/
     insmod transfpga.ko
     mknod /dev/transfpga c 245 0
-    ./lab8_sysarr_test 
+    ./lab9_cnn_test 
     cd /
     umount /mnt/
     ```
