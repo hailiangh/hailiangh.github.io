@@ -6,7 +6,7 @@ use_math: true
 use_code: true
 ---
 ## 1. Introduction
-In this lab we need to design systolic arrays for convolutional neural networks (CNN).  
+In this lab, we will design systolic arrays for convolutional neural networks (CNN). We will first learn the architecture of PE (Processing Element) and the structure of the systolic array. Then, we will learn the scheduling in the convolutional computation. Finally, we will learn about the complete CNN design.   
 
 ### 1.1 Structure of systolic arrays
 The structure discussed here is similar to the one described by authors *Xuechao Wei, Cody Hao Yu, Peng Zhang, Youxiang Chen, Yuxin Wang, Han Hu, Yun Liang, and J. Cong* in the paper, **“Automated Systolic Array Architecture Synthesis for High Throughput CNN Inference on FPGAs”** published in 2017 at the  *54th ACM/EDAC/IEEE Design Automation Conference (DAC), pp. 1–6*.  
@@ -77,7 +77,7 @@ Another important part of the systolic array is the controller. The controller c
 The state transition of the controller is shown in the figure below.  
 ![fig7](./pics/lab8_manual_SystolicArray_2D.png)  
 
-The controller is already implemented. Students don't need to modify it. The logic of this design is described below:  
+The controller is already implemented. The following section helps you understand how it works:    
 When loading weights and loading image, specify the memory address given the `o,i,r,c,kr,kc`. The weights are stored in the memory with the increasing of `kc`, then `kr`, then `i`, and then `o`. The image is stored in the memory with the increasing of `c`, then `r`, and then `i`.  
 The current values of these variables are represented by `io,ii,ir,ic,ikr,ikc`. You are required to use the values of `io,ii,ir,ic,ikr,ikc,do,di,dr,dc, dkr,dkc` (`waddr` and `inaddr` is the starting address of the weights and image). The places where the memory addresses are needed to be specified is right after the `LOADW` and `LOADIN` state, after the comments.  
 Control the input buffer of image and weights to output their data in the correct order. You can control them by setting their control port to 3. The control port of the input buffer from the first row to the last row is `ctlbwr[0]` to `ctlbwr[rows-1]`, and from the first column to the last column is `ctlinr[0]` to `ctlinr[cols-1]`. Once any of them is set to 3, the buffer will start to input the weights/image data to systolic array, one in each clock cycle. This part is at the beginning of the `CAL` state. You need to use the variable `count`, which indicates the current clock cycle within this state (starting from 0).  
