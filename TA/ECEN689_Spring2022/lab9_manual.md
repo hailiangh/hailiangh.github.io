@@ -10,9 +10,9 @@ In this lab, we will design systolic arrays for convolutional neural networks (C
 
 ### 1.1 Structure of systolic arrays
 The structure discussed here is similar to the one described by authors *Xuechao Wei, Cody Hao Yu, Peng Zhang, Youxiang Chen, Yuxin Wang, Han Hu, Yun Liang, and J. Cong* in the paper, **“Automated Systolic Array Architecture Synthesis for High Throughput CNN Inference on FPGAs”** published in 2017 at the  *54th ACM/EDAC/IEEE Design Automation Conference (DAC), pp. 1–6*.  
-![fig1](./pics/lab8_manual_SystolicArray_3D.png)  
+![fig1](./pics/lab9_manual_structure_of_systolic_array.png)  
 In the , the terms **WB**,**IB**,**OB** refer to the weight buffers, input buffers and output buffers. PE (Processing Element) is the basic unit similar to Lab8. Its structure in this lab is shown in the figure below.  
-![fig2](./pics/lab8_manual_SystolicArray_2D.png)  
+![fig2](./pics/lab9_manual_structure_of_pe.png)  
 
 ### 1.2 Convolution calculation
 For each layer of the CNN, we need to do the convolution. The pseudo-code is as follows:
@@ -32,7 +32,7 @@ for (o = 0; o < do; o++) {
 }
 ```
 where *do, di, dc, dr, dkr, dkc* are the maximum size limits in each direction. The strides of the kernel in the directions of row and column are denoted by *sr* and *sc* respectively. *W* represents the weights, *IN* represents the data of the input image and *OUT* denotes the output. The convolution is illustrated in the figure below.  
-![fig3](./pics/lab8_manual_SystolicArray_2D.png) 
+![fig3](./pics/lab9_manual_convolution.png) 
 For each PE, it can do multiplication and accumulate the data. So we need to input all the data required for each `OUT[o][r/sr][c/sc]` into one PE. For example, assume `sc = sr = 1`, to calculate `OUT[1][2][3]`, we need to input the pairs `(W[1][0][0][0], IN[0][2][3]), (W[1][1][0][0], IN[1][2][3]),… ……(W[1][0][1][0], IN[0][2+1][3]), (W[1][1][1][0], IN[1][2+1][3]), (W[1][2][1][0], IN[2][2+1][3])...` to one PE and finally let the the PE output the data.  
 
 ### 1.3 Scheduling of the convolution
@@ -44,18 +44,18 @@ If the size of the systolic array is smaller than `do*dc`, then `o` and `c` shou
 After all the `o` and `c` are mapped to the systolic array and the calculation is finished, `r` is increased by 1, and all the above steps are repeated until all the `OUT[o][r/sr][c/sc]` are calculated.  
 
 The scheduling of a systolic array of 3 rows and 4 columns are illustrated in the figure below, where `sr = sc = 1`.  
-![fig4](./pics/lab8_manual_SystolicArray_2D.png)  
+![fig4](./pics/lab9_manual_scheduling.png)  
 Note that with rows and columns increasing, the sequence of vectors are inputted with delays to synchonize the input of `W` and `IN` to one PE.  
 In this way, `W` and `IN` inputted to one PE can also be transmitted and used by PEs near it. For example, after `W[1][0][0][0]` and `IN[0][0][2]` arrives at PE at row 1 and column 2 at the same clock cycle. `W[1][0][0][0]` can also be transmitted to the PE at row 1 and column 3 at the next clock cycle, together with `IN[0][0][3]` which is needed to calculate `OUT[1][0][3]`.  
 
 ### 1.4 Proposed CNN
 The figure below shows the structure of the CNN we use. We will use it to do the inference on [MNIST](https://en.wikipedia.org/wiki/MNIST_database) dataset.  
-![fig5](./pics/lab8_manual_SystolicArray_2D.png)  
+![fig5](./pics/lab9_manual_CNN.png)  
 
 For simplicity, we ignore the pooling layer. The activation function of each layer is **ReLU**, except the last layer. The strides `sr` and `sc` of the two convolution layers are both 2.  
 
 Although the last two layers are fully connected layers, it can also be regarded as convolution layer for calculation purpose. If the input neurons are `m`, and output neurons are `n`, then, by setting `dkr = dkc = dr = dc = 1`, and `di = m`, `do = n`, we can reuse our convolution layer’s systolic array structure or scheduling approach to calculate fully connected layers, as shown in the figure below.  
-![fig6](./pics/lab8_manual_SystolicArray_2D.png)  
+![fig6](./pics/lab9_manual_fully_connected_layer.png)  
 
 
 ## 2. Lab Designs
@@ -75,7 +75,7 @@ All the IO buffers are already implemented and does not needed to be modified by
 ### 2.3 Controller Design  
 Another important part of the systolic array is the controller. The controller can arrange the inputs in the correct order and input them into the array. The controller can also control the array and read back the calculated results. It is written in **“matrix_cal.v”**.  
 The state transition of the controller is shown in the figure below.  
-![fig7](./pics/lab8_manual_SystolicArray_2D.png)  
+![fig7](./pics/lab9_manual_controller_states.png)  
 
 The controller is already implemented. The following section helps you understand how it works:    
 When loading weights and loading image, specify the memory address given the `o,i,r,c,kr,kc`. The weights are stored in the memory with the increasing of `kc`, then `kr`, then `i`, and then `o`. The image is stored in the memory with the increasing of `c`, then `r`, and then `i`.  
