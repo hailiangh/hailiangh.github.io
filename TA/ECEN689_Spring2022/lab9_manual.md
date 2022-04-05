@@ -31,6 +31,32 @@ for (o = 0; o < do; o++) {
   }
 }
 ```
+where *do, di, dc, dr, dkr, dkc* are the maximum size limits in each direction. The strides of the kernel in the directions of row and column are denoted by *sr* and *sc* respectively. *W* represents the weights, *IN* represents the data of the input image and *OUT* denotes the output. The convolution is illustrated in the figure below.  
+![fig3](./pics/lab8_manual_SystolicArray_2D.png) 
+For each PE, it can do multiplication and accumulate the data. So we need to input all the data required for each `OUT[o][r/sr][c/sc]` into one PE. For example, assume `sc = sr = 1`, to calculate `OUT[1][2][3]`, we need to input the pairs `(W[1][0][0][0], IN[0][2][3]), (W[1][1][0][0], IN[1][2][3]),… ……(W[1][0][1][0], IN[0][2+1][3]), (W[1][1][1][0], IN[1][2+1][3]), (W[1][2][1][0], IN[2][2+1][3])...` to one PE and finally let the the PE output the data.  
+
+### 1.3 Scheduling of the convolution
+Now we need to map the convolution to the systolic array. It is important to choose which PE would calculate which `OUT[o][r/sr][c/sc]`. In the proposed systolic array, each PE will transmit its two inputs (`W` and `IN`) to the next two PEs near it, so `W` and `IN` should also be available for use by the near PE.  
+In this lab, we map the calculation as described below:  
+We map **“o”** along the row, and **“c”** along the column. This means, the PE at row 1 column 2 (starting from row 0 and column 0) needs to calculate `OUT[1][r][2]`.  
+i,kr and kc are regarded as “vectors”, which means that for each PE, W and IN with different i,kr and kc are sequentially inputted. For the sequential inputs, i changes first, then kr, and then kc.
+If the size of the systolic array is smaller than do*dc, then o and c should be partially mapped to the systolic array. For example, assume sr=sc=1, if do=20, dc=10, and the systolic array is 4*5, then for the first time, o=0 to 3 are mapped to row and c=0 to 4 are mapped to column. After the computing is complete, o=0 to 3 and c=5 to 9 are mapped to row and column. Then, o=4 to 7 and c=0 to 4 are mapped, and so on.
+After all the o and c are mapped to the systolic array and computing is finished, r is increased by 1, and all the above steps are repeated until all the OUTorsrcsc are calculated.
+
+The scheduling of systolic array of 3 rows and 4 columns are illustrated in Figure 4, where sr=sc=1.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 The systolic array can be modified to a 2D structure as well, and this is shown in the figure below.  
 
