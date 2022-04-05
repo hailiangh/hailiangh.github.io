@@ -94,8 +94,8 @@ In this section, we will implement the design on the FPGA.
 
 - Click on **"Generate Bitstream"** to invoke the design flow and generate the bitstream. After the bitstream is generated, click **"File -> Export -> Export Hardware"**. Check the box **"Include Bitstream"**, click **"OK"**.
 - Please launch SDK and generate the boot image (**BOOT.bin**) as in the previous lab with one exception:  
-    Use the bitstream file **base/base.sdk/top_viterbi_hw_platform_0/top_systolicarray.bit**.
-- Copy the updated **BOOT.bin** and **lab9_cnn_test** into your SD card, boot the FPGA and run the test with command:
+    Use the bitstream file **base/base.sdk/top_sysarr_hw_platform_0/top_sysarr.bit**.
+- Copy the updated **BOOT.bin**, **cnn_data** and **lab9_cnn_test** into your SD card, boot the FPGA and run the test with command:
     ```  
     ./lab9_cnn_test  
     ```  
@@ -115,17 +115,15 @@ In this section, we will implement the design on the FPGA.
     ```
 
 ## 4. Pre-lab Submission
-- Please only submit one PDF file, containing your code and simulations for the 3-D systolic array design.   
-- Please name the PDF file as "Lab#_Prelab_Section#_LastName_FirstName.pdf".  
-- Please submit the PDF file on Canvas before April 4 (Monday) 11:59 pm.  
+Pre-lab is not required for this lab since this is a two-week lab. A balanced load would be **PE.v** and **array.v** in the first week, and **systolic_array.v** in the second week.  
 
 
 ## 5. Post-lab Submission
-- Please only submit one PDF file, containing the following items:  
-    - Screenshots of the behavioral simulation of the 2-D systolic array design  
-    - Screenshots of the terminal after running the command `./lab8_sysarr_test  
+- Please only submit one PDF file, containing the following items:    
+    - Screenshots of the terminal after running the command `./lab9_cnn_test  
     - A few words explaining the results
     - Screenshots of your code in this design
+    - Screenshots of any simulations you have for partial credits
 - Please name the PDF file as "Lab#_Postlab_Section#_LastName_FirstName.pdf".  
-- Please submit the PDF file on Canvas before April 8 (Friday) 11:59 pm.  
+- Please submit the PDF file on Canvas before April 22 (Friday) 11:59 pm.  
 
