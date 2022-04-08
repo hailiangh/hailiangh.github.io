@@ -32,7 +32,7 @@ for (o = 0; o < do; o++) {
 }
 ```
 where *do, di, dc, dr, dkr, dkc* are the maximum size limits in each direction. The strides of the kernel in the directions of row and column are denoted by *sr* and *sc* respectively. *W* represents the weights, *IN* represents the data of the input image and *OUT* denotes the output. The convolution is illustrated in the figure below.  
-![fig3](./pics/lab9_manual_convolution.png) 
+![fig3](./pics/lab9_manual_convolution.png)  
 For each PE, it can do multiplication and accumulate the data. So we need to input all the data required for each `OUT[o][r/sr][c/sc]` into one PE. For example, assume `sc = sr = 1`, to calculate `OUT[1][2][3]`, we need to input the pairs `(W[1][0][0][0], IN[0][2][3]), (W[1][1][0][0], IN[1][2][3]),… ……(W[1][0][1][0], IN[0][2+1][3]), (W[1][1][1][0], IN[1][2+1][3]), (W[1][2][1][0], IN[2][2+1][3])...` to one PE and finally let the the PE output the data.  
 
 ### 1.3 Scheduling of the convolution
@@ -77,7 +77,7 @@ Another important part of the systolic array is the controller. The controller c
 The state transition of the controller is shown in the figure below.  
 ![fig7](./pics/lab9_manual_controller_states.png)  
 
-The controller is already implemented. The following section helps you understand how it works:    
+**The controller is already implemented. The following section helps you understand how it works:**      
 When loading weights and loading image, specify the memory address given the `o,i,r,c,kr,kc`. The weights are stored in the memory with the increasing of `kc`, then `kr`, then `i`, and then `o`. The image is stored in the memory with the increasing of `c`, then `r`, and then `i`.  
 The current values of these variables are represented by `io,ii,ir,ic,ikr,ikc`. You are required to use the values of `io,ii,ir,ic,ikr,ikc,do,di,dr,dc, dkr,dkc` (`waddr` and `inaddr` is the starting address of the weights and image). The places where the memory addresses are needed to be specified is right after the `LOADW` and `LOADIN` state, after the comments.  
 Control the input buffer of image and weights to output their data in the correct order. You can control them by setting their control port to 3. The control port of the input buffer from the first row to the last row is `ctlbwr[0]` to `ctlbwr[rows-1]`, and from the first column to the last column is `ctlinr[0]` to `ctlinr[cols-1]`. Once any of them is set to 3, the buffer will start to input the weights/image data to systolic array, one in each clock cycle. This part is at the beginning of the `CAL` state. You need to use the variable `count`, which indicates the current clock cycle within this state (starting from 0).  
@@ -120,7 +120,7 @@ Pre-lab is not required for this lab since this is a two-week lab. A balanced lo
 
 ## 5. Post-lab Submission
 - Please only submit one PDF file, containing the following items:    
-    - Screenshots of the terminal after running the command `./lab9_cnn_test  
+    - Screenshots of the terminal after running the command `./lab9_cnn_test`  
     - A few words explaining the results
     - Screenshots of your code in this design
     - Screenshots of any simulations you have for partial credits
