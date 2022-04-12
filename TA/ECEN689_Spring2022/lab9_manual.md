@@ -91,6 +91,8 @@ In this section, we will implement the design on the FPGA.
     | Block RAM Name | Memory Type |    Port A Settings | Port B Settings|
     | ------------- | ------------- | ------------- | ------------- |
     | blk_mem_gen_0  | True Dual Port  | Width: 8 Depth: 65536 Read First Always Enabled  | Same as Port A  |  
+    | blk_mem_gen_1  | Single Port RAM | Width: 16 Depth: 65536 Read First Always Enabled  | Same as Port A  | 
+    
 
 - Click on **"Generate Bitstream"** to invoke the design flow and generate the bitstream. After the bitstream is generated, click **"File -> Export -> Export Hardware"**. Check the box **"Include Bitstream"**, click **"OK"**.
 - Please launch SDK and generate the boot image (**BOOT.bin**) as in the previous lab with one exception:  
