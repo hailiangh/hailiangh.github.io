@@ -16,3 +16,6 @@
 
 ## Lab 9: CNN on FPGAs
 [Lab9 Manual](ECEN689_Spring2022/lab9_manual.md)
+
+## Lab X: AES
+[LabX Manual](ECEN689_Spring2022/labX_manual.md)

@@ -31,7 +31,7 @@ As shown in the below figure, for an iterative approach, instead of implementing
 Figure 1 and 2 are taken from:
 [https://link.springer.com/content/pdf/10.1007%2F978-0-387-36682-1_9.pdf](https://link.springer.com/content/pdf/10.1007%2F978-0-387-36682-1_9.pdf).  
 
-## Using Virtual Input Output (VIO) to Drive Input and Read Output of the AES  
+## 2. Using Virtual Input Output (VIO) to Drive Input and Read Output of the AES  
 Unlike other labs, in this lab, you will be using a **virtual input output (VIO)** IP core to drive input data and read the output data from the AES. We will not be implementing the processor core in this lab.  
 As shown in the below figure, th top-level design has three major sections:
 - **Phase-locked loop:** This will take the input clock from the FPGA board (125MHz) and generates a 200MHz output clock. The **pll lock** signal from the PLL indicates if the output clock of the PLL is stable. For example, if pll lock = 1, the output of PLL is stable. Otherwise, there is no output clock generated. Please refer to the lab 2 manual for detailed instructions on instantiating PLL in the design.  
@@ -39,13 +39,73 @@ As shown in the below figure, th top-level design has three major sections:
 - **VIO IP core:** As shown in the figure below, the VIO drives the plaintext and key to the AES and receives the ciphertext from the AES. The following are the connections to the VIO:  
   - The clock signal connecting the **clk** input of the VIO should be the same clock driving the AES. This ensures that the signals to and from the VIO are synchronous to the signals in the AES.  
   - The inputs and outputs of the VIO are called **probe_in** and **probe_out**, respectively. As illustrated in the figure below, the **probe_in** signals receive the ciphertext and its valid signal from the AES. Likewise, the **probe_out** signals drive the plaintext, key, and their corresponding valid signals.  
+[!fig3](./pics/)  
 As we already have information on PLL instantiation and AES design, we will now focus on instantiating the VIO IP core required for accessing the AES design during runtime.  
 
+### 2.1 Instantiating a VIO IP Core
+The steps below shows how to instantiate a VIO IP core in the design.  
+- Click on the IP Catalog and then search for "VIO," as shown below.  
+[!fig4](./pics/)  
+[!fig5](./pics/)  
+- Mention the number of input and output probes in the "General option" tab.  
+[!fig5](./pics/)  
+- Provide the port width for each input in the "PROBE_IN ports" tab  
+[!fig5](./pics/)  
+- Provide the port width for each output in the "PROBE_OUT ports" tab. You can also specify the power-on value of these outputs by updating the tabs under "Initial Value (in hex)".  
+[!fig5](./pics/)
+-  Clicking "ok" will open up the following window. Next, click on "Generate" to generate the Verilog and project files corresponding to the configured VIO IO core.    
+[!fig5](./pics/)
+- Instantiate the generated VIO in the top-level file along with the AES and PLL module, as shown below. The following is an example code having the PLL, AES, and VIO instantiations. Please go through all the comments given in the below Verilog file to ensure the design works as intended. 
+[!fig5](./pics/)
+
+## 3. Testing the AES design using Vivado Simulations
+Please use the following testbench template to verify the AES design. The testbench includes a locally generated clock and the AES instance. However, it does not include the PLL and VIO IP cores, as shown below. Depending on the port names of the AES design, the below testbench should be modified. 
+[!fig5](./pics/)
+
+## 4. Testing the AES design on the FPGA using the VIO IP Core
+In this section, we will run the AES design on the FPGA using the VIO IP Core. 
+- Generate the bitstream *.bit file consisting of the AES along with the PLL and VIO IP core.  
+- If you have the Vivado Design Suite 2018.3 installed in your local machine, please skip this step. Otherwise, download the Vivado Lab Edition 2018.3 software on your local machine from [here](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html). Download the version given under "Vivado Lab Solutions - 2018.3  Full Product Installation" and install the same.  
+- Open the Vivado Design Suite (or Lab Edition) 2018.3 software. Click on the "Open Hardware Manager," as indicated in the below figure.  
+[!fig5](./pics/)  
+- Click on the "Open Target", as indicated in the below figure.  
+
+[!fig5](./pics/)  
+- Click on the "Program Device" to load the bit file into the FPGA.  
+
+[!fig5](./pics/)  
+- Provide the path where the bitstream (*.bit) and the debug probe file (*.ltx) are stored. The ltx file is required to access the VIO signals onboard. This file is generated along with the *.bit file and both these files can be found in the <project_name>.runs/impl_1 folder.  
 
 
+[!fig5](./pics/)  
+- After successful programming, the Vivado will automatically populate the VIO instances in the design, as shown below. Add the VIO input and output signals by clicking on the "+" sign indicated in the red box.   
 
-## 4. Pre-lab Submission
-Pre-lab is not required for this lab since this is a two-week lab. A balanced load would be **PE.v** and **array.v** in the first week, and **systolic_array.v** in the second week.  
+
+[!fig5](./pics/)  
+- You can either add all the signals or choose only the ones required.  
+
+[!fig5](./pics/)  
+
+- The tool lists the selected VIO signals. It also mentions if the signal is an input/output.  
+[!fig5](./pics/)  
+
+- The key and plaintext input values can be modified via the GUI, as shown below. Once the AES encrypts (this will take only few 200 MHz clock cycles), the ciphertext can be read from the dataout signal from the "Value" tab.  
+[!fig5](./pics/)  
+
+
+## 5. Resources Required
+### 5.1 Understanding the AES internals
+- Class notes
+- Section 5.1 and 5.2 in the [FIPS AES documentation](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf) (Page 13 - 20)
+- [Details on iterative and pipeline architecture](https://link.springer.com/content/pdf/10.1007%2F978-0-387-36682-1_9.pdf).   This document is available via [TAMU Library link](https://tamu.libguides.com/az.php?a=s) -> Choose "SpringerLink" -> Share your TAMU credentials -> Search for "Architectural Designs For the Advanced Encryption Standard". You can download the PDF version of this book for free.  
+### 5.2 Understanding VIO
+- [User guide](https://www.xilinx.com/support/documentation/ip_documentation/vio/v3_0/pg159-vio.pdf)
+- [Video guide](https://www.xilinx.com/video/hardware/logic-debug-in-vivado.html)
+### 5.3 Implementing PLL
+- Please refer to the lab 2 manual for detailed instructions on instantiating PLL in the design.  
+
+
+Pre-lab is not required.
 
 
 ## 5. Post-lab Submission
