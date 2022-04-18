@@ -105,17 +105,26 @@ In this section, we will run the AES design on the FPGA using the VIO IP Core.
 - Please refer to the lab 2 manual for detailed instructions on instantiating PLL in the design.  
 
 
-Pre-lab is not required.
+
 ### 6. Task for students
+The following are the tasks that should be done by students. 
+**Implementation of the pipelined version of AES**
+Please run the pipelined version of AES in simulation and on the FPGA with the same input vectors shown in the code snippet given in Section 3. If your ciphertext matches with the Dout value given in the code snippet, then your design works correctly.  
+**Implementation of the iterative version of AES**
+Please run the iterative version of AES in simulation and on the FPGA with the same input vectors shown in the code snippet given in Section 3. If your ciphertext matches with the Dout value given in the code snippet, then your design works correctly.  
+**Report of the designs**  
+Please report the four metrics below for both the pipelined and iterative designs. Share your inference by comparing and contrasting the two variants.  
+- **Power**: The total pwer consumption can be found from the <project_name>_power_routed.rpt file generated in the <project_name>.runs/impl_1 foler. Report the "Summary" section in this file. 
+- **Utilization**: The total area utilization can be found from the  <project_name>_utilization_placed.rpt file generated in the <project_name>.runs/impl_1 foler. Report the "Slice Logic" section in this file.   
+- **Throughput** – It is the total number of ciphertext generated per clock cycle.  
+- **Latency** – It is the total number of clock cycles required by the AES to generate the ciphertext after a new plaintext is provided.  
 
 
-## 5. Post-lab Submission
+
+## 7. Post-lab Submission
 - Please only submit one PDF file, containing the following items:    
-    - Screenshots of the terminal after running the command `./lab9_cnn_test  
-    - A few words explaining the results
-    - Screenshots of your code in this design
-    - Screenshots of any simulations you have for partial credits
+    - Screenshots and your answers required in Section 6  
 - Please name the PDF file as "Lab#_Postlab_Section#_LastName_FirstName.pdf".  
-- Please submit the PDF file on Canvas before April 22 (Friday) 11:59 pm.  
+- Please submit the PDF file on Canvas before April 29 (Friday) 11:59 pm.  
 
 
