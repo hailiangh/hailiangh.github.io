@@ -23,7 +23,7 @@ Depending on the power and area utilization requirements, the AES algorithm can 
 
 ### 1.1.1 Pipelined Implementation
 For a pipeline architecture, all AES rounds are unrolled. That is achieved by repeating one AES round 11 times, as shown in the below figure.  
-[!fig1](./pics/labX_manual_fig1.png)  
+![fig1](./pics/labX_manual_fig1.png)  
 
 ### 1.1.2 Iterative Implementation
 As shown in the below figure, for an iterative approach, instead of implementing "n" iterations of the algorithm, one iteration is implemented. This implemented design is used "n" clock cycles to achieve the final output.  
@@ -90,7 +90,7 @@ In this section, we will run the AES design on the FPGA using the VIO IP Core.
 [!fig18](./pics/labX_manual_fig18.png)  
 
 - The key and plaintext input values can be modified via the GUI, as shown below. Once the AES encrypts (this will take only few 200 MHz clock cycles), the ciphertext can be read from the dataout signal from the "Value" tab.  
-[!fig19](./pics/labX_manual_fig19.png)  
+![fig19](./pics/labX_manual_fig19.png)  
 
 
 ## 5. Resources Required
