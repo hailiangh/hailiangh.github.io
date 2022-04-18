@@ -106,6 +106,7 @@ In this section, we will run the AES design on the FPGA using the VIO IP Core.
 
 
 Pre-lab is not required.
+### 6. Task for students
 
 
 ## 5. Post-lab Submission
