@@ -23,11 +23,11 @@ Depending on the power and area utilization requirements, the AES algorithm can 
 
 ### 1.1.1 Pipelined Implementation
 For a pipeline architecture, all AES rounds are unrolled. That is achieved by repeating one AES round 11 times, as shown in the below figure.  
-[!fig1](./pics/)  
+[!fig1](./pics/labX_manual_fig1.png)  
 
 ### 1.1.2 Iterative Implementation
 As shown in the below figure, for an iterative approach, instead of implementing "n" iterations of the algorithm, one iteration is implemented. This implemented design is used "n" clock cycles to achieve the final output.  
-[!fig2](.pics/)  
+[!fig2](.pics/labX_manual_fig2.png)  
 Figure 1 and 2 are taken from:
 [https://link.springer.com/content/pdf/10.1007%2F978-0-387-36682-1_9.pdf](https://link.springer.com/content/pdf/10.1007%2F978-0-387-36682-1_9.pdf).  
 
@@ -39,58 +39,58 @@ As shown in the below figure, th top-level design has three major sections:
 - **VIO IP core:** As shown in the figure below, the VIO drives the plaintext and key to the AES and receives the ciphertext from the AES. The following are the connections to the VIO:  
   - The clock signal connecting the **clk** input of the VIO should be the same clock driving the AES. This ensures that the signals to and from the VIO are synchronous to the signals in the AES.  
   - The inputs and outputs of the VIO are called **probe_in** and **probe_out**, respectively. As illustrated in the figure below, the **probe_in** signals receive the ciphertext and its valid signal from the AES. Likewise, the **probe_out** signals drive the plaintext, key, and their corresponding valid signals.  
-[!fig3](./pics/)  
+[!fig3](./pics/labX_manual_fig3.png)  
 As we already have information on PLL instantiation and AES design, we will now focus on instantiating the VIO IP core required for accessing the AES design during runtime.  
 
 ### 2.1 Instantiating a VIO IP Core
 The steps below shows how to instantiate a VIO IP core in the design.  
 - Click on the IP Catalog and then search for "VIO," as shown below.  
-[!fig4](./pics/)  
-[!fig5](./pics/)  
+[!fig4](./pics/labX_manual_fig4.png)  
+[!fig5](./pics/labX_manual_fig5.png)  
 - Mention the number of input and output probes in the "General option" tab.  
-[!fig5](./pics/)  
+[!fig6](./pics/labX_manual_fig6.png)  
 - Provide the port width for each input in the "PROBE_IN ports" tab  
-[!fig5](./pics/)  
+[!fig7](./pics/labX_manual_fig7.png)  
 - Provide the port width for each output in the "PROBE_OUT ports" tab. You can also specify the power-on value of these outputs by updating the tabs under "Initial Value (in hex)".  
-[!fig5](./pics/)
+[!fig8](./pics/labX_manual_fig8.png)
 -  Clicking "ok" will open up the following window. Next, click on "Generate" to generate the Verilog and project files corresponding to the configured VIO IO core.    
-[!fig5](./pics/)
+[!fig9](./pics/labX_manual_fig9.png)
 - Instantiate the generated VIO in the top-level file along with the AES and PLL module, as shown below. The following is an example code having the PLL, AES, and VIO instantiations. Please go through all the comments given in the below Verilog file to ensure the design works as intended. 
-[!fig5](./pics/)
+[!fig10](./pics/labX_manual_fig10.png)
 
 ## 3. Testing the AES design using Vivado Simulations
 Please use the following testbench template to verify the AES design. The testbench includes a locally generated clock and the AES instance. However, it does not include the PLL and VIO IP cores, as shown below. Depending on the port names of the AES design, the below testbench should be modified. 
-[!fig5](./pics/)
+[!fig11](./pics/labX_manual_fig11.png)
 
 ## 4. Testing the AES design on the FPGA using the VIO IP Core
 In this section, we will run the AES design on the FPGA using the VIO IP Core. 
 - Generate the bitstream *.bit file consisting of the AES along with the PLL and VIO IP core.  
 - If you have the Vivado Design Suite 2018.3 installed in your local machine, please skip this step. Otherwise, download the Vivado Lab Edition 2018.3 software on your local machine from [here](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html). Download the version given under "Vivado Lab Solutions - 2018.3  Full Product Installation" and install the same.  
 - Open the Vivado Design Suite (or Lab Edition) 2018.3 software. Click on the "Open Hardware Manager," as indicated in the below figure.  
-[!fig5](./pics/)  
+[!fig12](./pics/labX_manual_fig12.png)  
 - Click on the "Open Target", as indicated in the below figure.  
 
-[!fig5](./pics/)  
+[!fig13](./pics/labX_manual_fig13.png)  
 - Click on the "Program Device" to load the bit file into the FPGA.  
 
-[!fig5](./pics/)  
+[!fig14](./pics/labX_manual_fig14.png)  
 - Provide the path where the bitstream (*.bit) and the debug probe file (*.ltx) are stored. The ltx file is required to access the VIO signals onboard. This file is generated along with the *.bit file and both these files can be found in the <project_name>.runs/impl_1 folder.  
 
 
-[!fig5](./pics/)  
+[!fig15](./pics/labX_manual_fig15.png)  
 - After successful programming, the Vivado will automatically populate the VIO instances in the design, as shown below. Add the VIO input and output signals by clicking on the "+" sign indicated in the red box.   
 
 
-[!fig5](./pics/)  
+[!fig16](./pics/labX_manual_fig16.png)  
 - You can either add all the signals or choose only the ones required.  
 
-[!fig5](./pics/)  
+[!fig17](./pics/labX_manual_fig17.png)  
 
 - The tool lists the selected VIO signals. It also mentions if the signal is an input/output.  
-[!fig5](./pics/)  
+[!fig18](./pics/labX_manual_fig18.png)  
 
 - The key and plaintext input values can be modified via the GUI, as shown below. Once the AES encrypts (this will take only few 200 MHz clock cycles), the ciphertext can be read from the dataout signal from the "Value" tab.  
-[!fig5](./pics/)  
+[!fig19](./pics/labX_manual_fig19.png)  
 
 
 ## 5. Resources Required
