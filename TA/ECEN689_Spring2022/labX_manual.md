@@ -27,7 +27,7 @@ For a pipeline architecture, all AES rounds are unrolled. That is achieved by re
 
 ### 1.1.2 Iterative Implementation
 As shown in the below figure, for an iterative approach, instead of implementing "n" iterations of the algorithm, one iteration is implemented. This implemented design is used "n" clock cycles to achieve the final output.  
-![fig2](.pics/labX_manual_fig2.png)  
+![fig2](.pics/labX_manual_fig2-Copy.png)  
 
 ## 2. Using Virtual Input Output (VIO) to Drive Input and Read Output of the AES  
 Unlike other labs, in this lab, you will be using a **virtual input output (VIO)** IP core to drive input data and read the output data from the AES. We will not be implementing the processor core in this lab.  
