@@ -28,8 +28,6 @@ For a pipeline architecture, all AES rounds are unrolled. That is achieved by re
 ### 1.1.2 Iterative Implementation
 As shown in the below figure, for an iterative approach, instead of implementing "n" iterations of the algorithm, one iteration is implemented. This implemented design is used "n" clock cycles to achieve the final output.  
 ![fig2](.pics/labX_manual_fig2.png)  
-Figure 1 and 2 are taken from:
-[https://link.springer.com/content/pdf/10.1007%2F978-0-387-36682-1_9.pdf](https://link.springer.com/content/pdf/10.1007%2F978-0-387-36682-1_9.pdf).  
 
 ## 2. Using Virtual Input Output (VIO) to Drive Input and Read Output of the AES  
 Unlike other labs, in this lab, you will be using a **virtual input output (VIO)** IP core to drive input data and read the output data from the AES. We will not be implementing the processor core in this lab.  
@@ -94,13 +92,15 @@ In this section, we will run the AES design on the FPGA using the VIO IP Core.
 
 
 ## 5. Resources Required
-### 5.1 Understanding the AES internals
+### 5.1 Understanding the AES internals  
 - Class notes
 - Section 5.1 and 5.2 in the [FIPS AES documentation](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf) (Page 13 - 20)
 - [Details on iterative and pipeline architecture](https://link.springer.com/content/pdf/10.1007%2F978-0-387-36682-1_9.pdf).   This document is available via [TAMU Library link](https://tamu.libguides.com/az.php?a=s) -> Choose "SpringerLink" -> Share your TAMU credentials -> Search for "Architectural Designs For the Advanced Encryption Standard". You can download the PDF version of this book for free.  
+
 ### 5.2 Understanding VIO
 - [User guide](https://www.xilinx.com/support/documentation/ip_documentation/vio/v3_0/pg159-vio.pdf)
 - [Video guide](https://www.xilinx.com/video/hardware/logic-debug-in-vivado.html)
+
 ### 5.3 Implementing PLL
 - Please refer to the lab 2 manual for detailed instructions on instantiating PLL in the design.  
 
