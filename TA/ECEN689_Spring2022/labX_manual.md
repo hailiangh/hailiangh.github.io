@@ -57,7 +57,7 @@ The steps below shows how to instantiate a VIO IP core in the design.
 ![fig10](./pics/labX_manual_fig10.png)
 
 ## 3. Testing the AES design using Vivado Simulations
-Please use the following testbench template to verify the AES design. The testbench includes a locally generated clock and the AES instance. However, it does not include the PLL and VIO IP cores, as shown below. Depending on the port names of the AES design, the below testbench should be modified. 
+Please use the following testbench template to verify the AES design. The testbench includes a locally generated clock and the AES instance. However, it does not include the PLL and VIO IP cores, as shown below. Depending on the port names of the AES design, the below testbench should be modified.   
 ![fig11](./pics/labX_manual_fig11.png)
 
 ## 4. Testing the AES design on the FPGA using the VIO IP Core
