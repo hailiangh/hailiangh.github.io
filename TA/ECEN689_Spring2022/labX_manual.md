@@ -63,6 +63,7 @@ Please use the following testbench template to verify the AES design. The testbe
 ## 4. Testing the AES design on the FPGA using the VIO IP Core
 In this section, we will run the AES design on the FPGA using the VIO IP Core. 
 - Generate the bitstream *.bit file consisting of the AES along with the PLL and VIO IP core.  
+- If you have an error when generating the bitsream (Unspecified IO Standard), check Section 8 for a possible solution.  
 - If you have the Vivado Design Suite 2018.3 installed in your local machine, please skip this step. Otherwise, download the Vivado Lab Edition 2018.3 software on your local machine from [here](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html). Download the version given under "Vivado Lab Solutions - 2018.3  Full Product Installation" and install the same.  
 - Open the Vivado Design Suite (or Lab Edition) 2018.3 software. Click on the "Open Hardware Manager," as indicated in the below figure.  
 ![fig12](./pics/labX_manual_fig12.png)  
@@ -128,4 +129,14 @@ Please report the four metrics below for both the pipelined and iterative design
 - Please name the PDF file as "Lab#_Postlab_Section#_LastName_FirstName.pdf".  
 - Please submit the PDF file on Canvas before April 29 (Friday) 11:59 pm.  
 
-
+## 8. Unspecifed IO Standard Error when generating bitsream
+By default, we didn't assign a pin for the output signal in the top-level design (temp_out). And Vivado will complain about this when generating the bitsream. Below is the solution if you got this error.  
+- Check the file **"aes_lab.xdc"** in design sources and copy the last two commands as shown below.  
+  ```
+  set_property
+  ```
+- Create a new tcl file **"set_cons.tcl"** in your project folder, and paste those two commands into this file.  
+- In Vivado, when the implementation is finished, right click on **"Generate Bitsream"**, click on **"Bitsream Settings"**.   
+- In the option **"tcl.pre"**, select the tcl file you created. Then click on **"OK"**.  
+- Now you should be able to generate the bitsream without this error.  
+  
