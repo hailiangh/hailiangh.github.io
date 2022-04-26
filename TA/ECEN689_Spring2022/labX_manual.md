@@ -131,7 +131,7 @@ Please report the four metrics below for both the pipelined and iterative design
 
 ## 8. Unspecifed IO Standard Error when generating bitsream
 By default, we didn't assign a pin for the output signal in the top-level design (temp_out). And Vivado will complain about this when generating the bitsream. Below is the solution if you got this error.  
-- Download file **"pre_bitstream.tcl"** from Piazza)  
+- Download file **"pre_bitstream.tcl"** from Piazza.   
 - In Vivado, when the implementation is finished, right click on **"Generate Bitsream"**, click on **"Bitsream Settings"**.   
 - In the option **"tcl.pre"**, select the tcl file you downloaded. Then click on **"OK"**.  
 - Now you should be able to generate the bitsream without this error.  
