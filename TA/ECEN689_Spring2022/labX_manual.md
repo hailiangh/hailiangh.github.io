@@ -133,7 +133,8 @@ Please report the four metrics below for both the pipelined and iterative design
 By default, we didn't assign a pin for the output signal in the top-level design (temp_out). And Vivado will complain about this when generating the bitsream. Below is the solution if you got this error.  
 - Check the file **"aes_lab.xdc"** in design sources and copy the last two commands as shown below.  
   ```
-  set_property
+  set_property SEVERITY {Warning} [get_drc_checks NSTD-1]
+  set_property SEVERITY {Warning} [get_drc_checks UCIO-1]
   ```
 - Create a new tcl file **"set_cons.tcl"** in your project folder, and paste those two commands into this file.  
 - In Vivado, when the implementation is finished, right click on **"Generate Bitsream"**, click on **"Bitsream Settings"**.   
