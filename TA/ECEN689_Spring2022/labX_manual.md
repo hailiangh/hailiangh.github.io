@@ -136,7 +136,7 @@ By default, we didn't assign a pin for the output signal in the top-level design
   set_property SEVERITY {Warning} [get_drc_checks NSTD-1]
   set_property SEVERITY {Warning} [get_drc_checks UCIO-1]
   ```
-- Create a new tcl file **"set_cons.tcl"** in your project folder, and paste those two commands into this file.  
+- Create a new tcl file **"pre_bitstream.tcl"** in your project folder, and paste those two commands into this file.  (Or download this file from Piazza)  
 - In Vivado, when the implementation is finished, right click on **"Generate Bitsream"**, click on **"Bitsream Settings"**.   
 - In the option **"tcl.pre"**, select the tcl file you created. Then click on **"OK"**.  
 - Now you should be able to generate the bitsream without this error.  
