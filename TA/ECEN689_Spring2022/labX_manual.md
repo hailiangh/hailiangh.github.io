@@ -110,7 +110,7 @@ In this section, we will run the AES design on the FPGA using the VIO IP Core.
 The following are the tasks that should be done by students.  
 **Implementation of the pipelined version of AES**  
 Please run the pipelined version of AES in simulation and on the FPGA with the same input vectors shown in the code snippet given in Section 3. If your ciphertext matches with the Dout value given in the code snippet, then your design works correctly.  
-**Implementation of the iterative version of AES**  (Graduate students only)
+**Implementation of the iterative version of AES**  (Graduate students only)  
 Please run the iterative version of AES in simulation with the same input vectors shown in the code snippet given in Section 3. If your ciphertext matches with the Dout value given in the code snippet, then your design works correctly.  
 **Report of the designs**  
 Please report the four metrics below for both the pipelined and iterative designs. Share your inference by comparing and contrasting the two variants.  
