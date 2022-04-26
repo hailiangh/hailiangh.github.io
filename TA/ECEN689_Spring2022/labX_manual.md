@@ -66,6 +66,7 @@ In this section, we will run the AES design on the FPGA using the VIO IP Core.
 - If you have the Vivado Design Suite 2018.3 installed in your local machine, please skip this step. Otherwise, download the Vivado Lab Edition 2018.3 software on your local machine from [here](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html). Download the version given under "Vivado Lab Solutions - 2018.3  Full Product Installation" and install the same.  
 - Open the Vivado Design Suite (or Lab Edition) 2018.3 software. Click on the "Open Hardware Manager," as indicated in the below figure.  
 ![fig12](./pics/labX_manual_fig12.png)  
+- On the FPGA board, toggle the jumper **JP5** to **JTAG**. Connect the FPGA with the computer using a USB-cable, and turn it on.  
 - Click on the "Open Target", as indicated in the below figure.  
 
 ![fig13](./pics/labX_manual_fig13.png)  
