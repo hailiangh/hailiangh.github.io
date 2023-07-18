@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a Ph.D. candidate in the Department of Electrical and Computer Engineering at [Texas A&M University](https://www.tamu.edu/index.html), supervised by Prof. [Jiang Hu](https://cesg.tamu.edu/people-2/faculty/jiang-hu/). I recieved my B.S. degree in Electrical Engineering from [Harbin Institute of Technology](http://en.hit.edu.cn/) and M.S. degree in Electrical Engineering from [Northwestern University](https://www.northwestern.edu/).
+I am a Ph.D. candidate in the Department of Electrical and Computer Engineering at [Texas A&M University](https://www.tamu.edu/index.html), supervised by Prof. [Jiang Hu](https://cesg.tamu.edu/people-2/faculty/jiang-hu/). I recieved my B.S. degree in Electrical Engineering from [Harbin Institute of Technology](http://en.hit.edu.cn/), and M.S. degree in Electrical Engineering from [Northwestern University](https://www.northwestern.edu/).
 
 Research Interests
 ======
