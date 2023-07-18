@@ -18,7 +18,8 @@ Publications
 
 Research Interests
 ======
-Electronic Design Automation (EDA)
+- Placement Optimization on FPGAs
+- Machine Learning in EDA
 
 Teaching
 ======
