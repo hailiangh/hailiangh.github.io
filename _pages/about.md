@@ -24,6 +24,8 @@ Publications
 
 Teaching
 ======
+- \[TA\] 2023 Fall, ECEN 215: Principles of Electrical Engineering
+- \[TA\] 2023 Fall, ECEN 250: Machine Learning for Electrical Engineers
 - \[TA\] 2023 Spring, ECEN 468/719: Advanced Digital System Design
 - \[TA\] 2022 Fall, ECEN 289: Machine Learning for Electrical Engineers
 - \[TA\] 2022 Spring, ECEN 489/689: FPGA Information Processing Systems
