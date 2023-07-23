@@ -9,7 +9,7 @@
 locale                   : "en-US"
 title                    : "Hailiang Hu"
 title_separator          : "-"
-name                     : &name "Hailiang Hu (胡海亮）"
+name                     : &name "Hailiang Hu"
 description              : &description "personal description"
 url                      : https://hailiangh.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -57,7 +57,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : &twitter
+  username               : # &twitter
 facebook:
   username               :
   app_id                 :
@@ -80,12 +80,12 @@ analytics:
 
 # Site Author
 author:
-  name             : "Hailiang Hu"
+  name             : "Hailiang Hu  (胡海亮）"
   avatar           : "profile.png"
   bio              : "Doctoral Student in Computer Engineering at Texas A&M University"
   location         : "College Station, TX, USA"
   employer         :
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : # "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : "https://scholar.google.com/citations?user=uUWo5pkAAAAJ&hl=en"
   email            : "hailiang@tamu.edu"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
@@ -103,13 +103,13 @@ author:
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
   LinkedIn         : "hailiang-hu-282b90ba"
-  orcid            : "http://orcid.org/yourorcidurl"
+  orcid            : # "http://orcid.org/yourorcidurl"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          : # "replacethistwitterhandle"
   vine             :
   weibo            :
   xing             :
