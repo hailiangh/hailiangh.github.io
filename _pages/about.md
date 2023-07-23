@@ -22,6 +22,12 @@ Publications
 - \[C2\] Donghao Fang, Boyang Zhang, **Hailiang Hu**, Wuxi Li, Bo Yuan, and Jiang Hu. [Global Placement Exploiting Soft 2D Regularity](https://dl.acm.org/doi/abs/10.1145/3505170.3506723). International Symposium on Physical Design (**ISPD**), 2022.
 - \[C1\] Yishuang Lin, Rongjian Liang, Yaguang Li, **Hailiang Hu**, Jiang Hu. [Mapping Large Scale Finite Element Computing on to Wafer-Scale Engines](https://ieeexplore.ieee.org/abstract/document/9712538). Asia and South Pacific Design Automation Conference (**ASP-DAC**), 2022.
 
+Experience
+======
+- AMD (Xilinx), San Jose, CA, Software Development Intern, Vivado Placement Team, May. 2023 - Aug. 2023
+- AMD (Xilinx), San Jose, CA, Software Development Intern, Vivado Synthesis Team, May. 2022 - Aug. 2022
+
+
 Teaching
 ======
 - \[TA\] 2023 Fall, ECEN 215: Principles of Electrical Engineering
