@@ -24,8 +24,12 @@ Publications
 
 Experience
 ======
-- AMD (Xilinx), San Jose, CA, Software Development Intern, Vivado Placement Team, May. 2023 - Aug. 2023
-- AMD (Xilinx), San Jose, CA, Software Development Intern, Vivado Synthesis Team, May. 2022 - Aug. 2022
+- AMD (Xilinx), San Jose, CA
+  - Software Development Intern, Vivado Placement Team
+  - May. 2023 - Aug. 2023
+- AMD (Xilinx), San Jose, CA
+  - Software Development Intern, Vivado Synthesis Team
+  - May. 2022 - Aug. 2022
 
 
 Teaching
