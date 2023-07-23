@@ -24,9 +24,9 @@ Publications
 
 Teaching
 ======
-- 2023 Spring, ECEN 468/719: Advanced Digital System Design
-- 2022 Fall, ECEN 289: Machine Learning for Electrical Engineers
-- 2022 Spring, ECEN 489/689: FPGA Information Processing Systems
-- Spring 2021, ECEN 489/689: FPGA Information Processing Systems
+- TA: 2023 Spring, ECEN 468/719: Advanced Digital System Design
+- TA: 2022 Fall, ECEN 289: Machine Learning for Electrical Engineers
+- TA: 2022 Spring, ECEN 489/689: FPGA Information Processing Systems
+- TA: Spring 2021, ECEN 489/689: FPGA Information Processing Systems
 
 
