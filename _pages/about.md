@@ -18,7 +18,7 @@ Research Interests
 Publications
 ======
 - \[C4\] **Hailiang Hu**, Donghao Fang, Wuxi Li, Bo Yuan, Jiang Hu. Systolic Array Placement on FPGAs. International Conference on Computer-Aided Design (**ICCAD**), 2023. [\[PDF\]](https://hailiangh.github.io/pdf/ICCAD23_SystolicArrayPlacementOnFPGA_Hu.pdf)
-- \[C4\] **Hailiang Hu**, Donghao Fang, Wuxi Li, Bo Yuan, Jiang Hu. Systolic Array Placement on FPGAs. International Conference on Computer-Aided Design (**ICCAD**), 2023. <a href="https://hailiangh.github.io/pdf/ICCAD23_SystolicArrayPlacementOnFPGA_Hu.pdf" target="_blank">PDF.</a>
+- \[C4\] **Hailiang Hu**, Donghao Fang, Wuxi Li, Bo Yuan, Jiang Hu. Systolic Array Placement on FPGAs. International Conference on Computer-Aided Design (**ICCAD**), 2023. <a href="https://hailiangh.github.io/pdf/ICCAD23_SystolicArrayPlacementOnFPGA_Hu.pdf" target="_blank">\[PDF\].</a>
 - \[C3\] **Hailiang Hu**, Jiang Hu, Fan Zhang, Bing Tian, and Ismail Bustany. [Machine-Learning Based Delay Prediction for FPGA Technology Mapping](https://dl.acm.org/doi/abs/10.1145/3557988.3569713). System Level Interconnect Pathfinding (**SLIP**), 2022.
 - \[C2\] Donghao Fang, Boyang Zhang, **Hailiang Hu**, Wuxi Li, Bo Yuan, and Jiang Hu. [Global Placement Exploiting Soft 2D Regularity](https://dl.acm.org/doi/abs/10.1145/3505170.3506723). International Symposium on Physical Design (**ISPD**), 2022.
 - \[C1\] Yishuang Lin, Rongjian Liang, Yaguang Li, **Hailiang Hu**, Jiang Hu. [Mapping Large Scale Finite Element Computing on to Wafer-Scale Engines](https://ieeexplore.ieee.org/abstract/document/9712538). Asia and South Pacific Design Automation Conference (**ASP-DAC**), 2022.
