@@ -1,4 +1,4 @@
-# Install Vim on your local directory without root
+# Installing Vim on your local directory without root
 
 ### Clone and compile Vim
 ```
