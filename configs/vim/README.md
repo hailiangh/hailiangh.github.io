@@ -1,27 +1,27 @@
 # Installing Vim on your local directory without root
 
-### Clone and compile Vim
+### Clone Vim from GitHub
 ```
 git clone https://github.com/vim/vim.git
 cd vim/src
-make
 ```
 
 ### Install in local directory
 ```
 # suppose you want to intall it in ~/.local
-make install DESTDIR=~/.local
+./configure --prefix=$HOME/.local
+make && make install
 ```
 
 ### Make the installed Vim as default
 ```
 # add the following in ~/.bashrc
-# verify that vim is installed in the following dir
-export PATH=~/.local/usr/local/bin/:$PATH
+export PATH=$HOME/.local/bin/:$PATH
 ```
 
 ### Verify that Vim is installed
 ```
+source ~/.bashrc
 which vim
 vim --version
 ```
