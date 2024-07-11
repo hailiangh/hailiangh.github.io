@@ -27,6 +27,9 @@ Publications
 
 Experience
 ======
+- Google DeepMind, Mountain View, CA
+  - Student Researcher
+  - May. 2024 - Aug. 2024
 - AMD (Xilinx), San Jose, CA
   - Software Development Intern, Vivado Placement Team
   - May. 2023 - Aug. 2023
