@@ -17,6 +17,7 @@ main:
     
   - title: "CV"
     url: /pdf/CV_HailiangHu.pdf
+    external: true
     
   # - title: "Guide"
   #   url: /markdown/
