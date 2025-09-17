@@ -41,6 +41,7 @@ Experience
 
 Teaching
 ======
+- \[TA\] 2024 Summer, ECEN 250: Machine Learning for Electrical Engineers
 - \[TA\] 2023 Fall, ECEN 215: Principles of Electrical Engineering
 - \[TA\] 2023 Fall, ECEN 250: Machine Learning for Electrical Engineers
 - \[TA\] 2023 Spring, ECEN 468/719: Advanced Digital System Design
