@@ -20,6 +20,7 @@ Publications
 <!--
 - \[C4\] **Hailiang Hu**, Donghao Fang, Wuxi Li, Bo Yuan, Jiang Hu. Systolic Array Placement on FPGAs. International Conference on Computer-Aided Design (**ICCAD**), 2023. <a href="https://hailiangh.github.io/pdf/ICCAD23_SystolicArrayPlacementOnFPGA_Hu.pdf" target="_blank">&#091;PDF&#093;</a>
 -->
+- \[C6\] Donghao Fang, **Hailiang Hu**, Wuxi Li, Jiang Hu. A New Approach to Performance-Driven Analog IC Placement. International Symposium on Physical Design (**ISPD**), 2025.
 - \[C5\] Donghao Fang, **Hailiang Hu**, Wuxi Li, Bo Yuan, Jiang Hu. [SysMix: Mixed-Size Placement for Systolic-Array-Based Hierarchical Designs](https://dl.acm.org/doi/10.1145/3676536.3676690). International Conference on Computer-Aided Design (**ICCAD**), 2024.
 - \[C4\] **Hailiang Hu**, Donghao Fang, Wuxi Li, Bo Yuan, Jiang Hu. [Systolic Array Placement on FPGAs](https://ieeexplore.ieee.org/document/10323742). International Conference on Computer-Aided Design (**ICCAD**), 2023. 
 - \[C3\] **Hailiang Hu**, Jiang Hu, Fan Zhang, Bing Tian, and Ismail Bustany. [Machine-Learning Based Delay Prediction for FPGA Technology Mapping](https://dl.acm.org/doi/abs/10.1145/3557988.3569713). System Level Interconnect Pathfinding (**SLIP**), 2022.
@@ -28,14 +29,17 @@ Publications
 
 Experience
 ======
+- AMD (Xilinx), San Jose, CA
+  - Senior Software Development Engineer
+  - Oct. 2025 -
 - Google DeepMind, Mountain View, CA
   - Student Researcher
   - May. 2024 - Aug. 2024
 - AMD (Xilinx), San Jose, CA
-  - Software Development Intern, Vivado Placement Team
+  - Software Development Intern
   - May. 2023 - Aug. 2023
 - AMD (Xilinx), San Jose, CA
-  - Software Development Intern, Vivado Synthesis Team
+  - Software Development Intern
   - May. 2022 - Aug. 2022
 
 
