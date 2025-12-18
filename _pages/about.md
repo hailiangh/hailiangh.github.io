@@ -7,8 +7,7 @@ redirect_from:
   - /about/
   - /about.html
 ---
-
-I am a Ph.D. candidate in the Department of Electrical and Computer Engineering at [Texas A&M University](https://www.tamu.edu/index.html), supervised by Prof. [Jiang Hu](https://cesg.tamu.edu/people-2/faculty/jiang-hu/). I recieved my B.S. degree in Electrical Engineering from [Harbin Institute of Technology](http://en.hit.edu.cn/), and M.S. degree in Electrical Engineering from [Northwestern University](https://www.northwestern.edu/).
+I am a Senior Software Engineer in the Vivado Implementation Team at AMD. Prior to joining AMD, I received my Ph.D. degree in Electrical and Computer Engineering from [Texas A&M University](https://www.tamu.edu/index.html) in 2025, supervised by Prof. [Jiang Hu](https://cesg.tamu.edu/people-2/faculty/jiang-hu/). I recieved my B.S. degree in Electrical Engineering from [Harbin Institute of Technology](http://en.hit.edu.cn/), and M.S. degree in Electrical Engineering from [Northwestern University](https://www.northwestern.edu/).
 
 Research Interests
 ======
