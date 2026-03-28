@@ -20,7 +20,7 @@ Publications
 - \[C4\] **Hailiang Hu**, Donghao Fang, Wuxi Li, Bo Yuan, Jiang Hu. Systolic Array Placement on FPGAs. International Conference on Computer-Aided Design (**ICCAD**), 2023. <a href="https://hailiangh.github.io/pdf/ICCAD23_SystolicArrayPlacementOnFPGA_Hu.pdf" target="_blank">&#091;PDF&#093;</a>
 -->
 - \[C7\] **Hailiang Hu**, Haodong Chang, Donghao Fang, Zhenrui Wang, Wuxi Li, Rongjian Liang, Bo Yuan, Jiang Hu. LegoMap: Optimization for High-Throughput Transformer Computing on AI Engine-Based FPGAs. International Symposium on Field-Programmable Custom Computing Machines (**FCCM**), 2026.
-- \[C6\] Donghao Fang, **Hailiang Hu**, Wuxi Li, Jiang Hu. A New Approach to Performance-Driven Analog IC Placement. International Symposium on Physical Design (**ISPD**), 2026.
+- \[C6\] Donghao Fang, **Hailiang Hu**, Wuxi Li, Jiang Hu. [A New Approach to Performance-Driven Analog IC Placement](https://dl.acm.org/doi/10.1145/3764386.3779578). International Symposium on Physical Design (**ISPD**), 2026.
 - \[C5\] Donghao Fang, **Hailiang Hu**, Wuxi Li, Bo Yuan, Jiang Hu. [SysMix: Mixed-Size Placement for Systolic-Array-Based Hierarchical Designs](https://dl.acm.org/doi/10.1145/3676536.3676690). International Conference on Computer-Aided Design (**ICCAD**), 2024.
 - \[C4\] **Hailiang Hu**, Donghao Fang, Wuxi Li, Bo Yuan, Jiang Hu. [Systolic Array Placement on FPGAs](https://ieeexplore.ieee.org/document/10323742). International Conference on Computer-Aided Design (**ICCAD**), 2023. 
 - \[C3\] **Hailiang Hu**, Jiang Hu, Fan Zhang, Bing Tian, and Ismail Bustany. [Machine-Learning Based Delay Prediction for FPGA Technology Mapping](https://dl.acm.org/doi/abs/10.1145/3557988.3569713). System Level Interconnect Pathfinding (**SLIP**), 2022.
