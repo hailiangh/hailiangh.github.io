@@ -16,8 +16,8 @@ Research Interests
 
 Publications
 ======
-<!-- - \[C8\] Haodong Chang, **Hailiang Hu**, Zhenrui Wang, Yu Gong, Rongjian Liang, Zhexiang Tang, Bo Yuan, Jiang Hu. Fast Cross-Operator Optimization of Attention Dataflow. , 2026.-->
-- \[C7\] **Hailiang Hu**, Haodong Chang, Donghao Fang, Zhenrui Wang, Wuxi Li, Rongjian Liang, Bo Yuan, Jiang Hu. [LegoMap: Optimization for High-Throughput Transformer Computing on AI Engine-Based FPGAs](https://ieeexplore.ieee.org/document/11552655). International Symposium on Field-Programmable Custom Computing Machines (**FCCM**), 2026.
+- \[C8\] **Hailiang Hu**, Haodong Chang, Donghao Fang, Zhenrui Wang, Wuxi Li, Rongjian Liang, Bo Yuan, Jiang Hu. [LegoMap: Optimization for High-Throughput Transformer Computing on AI Engine-Based FPGAs](https://ieeexplore.ieee.org/document/11552655). International Symposium on Field-Programmable Custom Computing Machines (**FCCM**), 2026.
+- \[C7\] Haodong Chang, **Hailiang Hu**, Zhenrui Wang, Yu Gong, Rongjian Liang, Zhexiang Tang, Bo Yuan, Jiang Hu. [Fast Cross-Operator Optimization of Attention Dataflow](https://arxiv.org/abs/2604.03446). , 2026.
 - \[C6\] Donghao Fang, **Hailiang Hu**, Wuxi Li, Jiang Hu. [A New Approach to Performance-Driven Analog IC Placement](https://dl.acm.org/doi/10.1145/3764386.3779578). International Symposium on Physical Design (**ISPD**), 2026.
 - \[J1\] Donghao Fang, Boyang Zhang, **Hailiang Hu**, Wuxi Li, Bo Yuan, Jiang Hu. [Global Placement Exploiting Soft 2D Regularity](https://dl.acm.org/doi/10.1145/3705729). ACM Transactions on Design Automation of Electronic Systems (**TODAES**), 2025. 
 - \[C5\] Donghao Fang, **Hailiang Hu**, Wuxi Li, Bo Yuan, Jiang Hu. [SysMix: Mixed-Size Placement for Systolic-Array-Based Hierarchical Designs](https://dl.acm.org/doi/10.1145/3676536.3676690). International Conference on Computer-Aided Design (**ICCAD**), 2024.
